@@ -1,28 +1,41 @@
-- 1. **kubectl logs** - Consulter logs containers
+<a id="index"></a>
+**Index** :
 
-- 2. **kubectl describe** - Diagnostiquer problèmes ressources
+I. [**`kubectl logs`**](#i-kubectl-logs) - Consulter logs containers
 
-- 3. **kubectl exec** - Shell dans pod running
+II. [**`kubectl describe`**](#ii-kubectl-describe) - Diagnostiquer problèmes ressources
 
-- 4. **Events K8s** - Événements cluster
+III. [**`kubectl exec`**](#iii-kubectl-exec) - Shell dans pod running
 
-- 5. **Patterns Erreurs Courantes** - ImagePullBackOff, CrashLoopBackOff, etc.
+IV. [**Events K8s**](#iv-events-k8s) - Événements cluster
 
-## 1. **kubectl logs**
+V. [**Patterns d'Erreurs Courantes**](#v-patterns-derreurs-courantes) - ImagePullBackOff, CrashLoopBackOff, etc.
 
-
-
-## 2. **kubectl describe**
-
-
-
-## 3. **kubectl exec**
+---
+<a id="i-kubectl-logs"></a>
+# I. [**`kubectl logs`**](#index)
 
 
 
-## 4. **Events K8s**
+---
+<a id="ii-kubectl-describe"></a>
+# II. [**`kubectl describe`**](#index)
 
 
 
-## 5. **Patterns Erreurs Courantes**
+---
+<a id="iii-kubectl-exec"></a>
+# III. [**`kubectl exec`**](#index)
+
+
+
+---
+<a id="iv-events-k8s"></a>
+# IV. [**Events K8s**](#index)
+
+
+
+---
+<a id="v-patterns-derreurs-courantes"></a>
+# V. [**Patterns d'Erreurs Courantes**](#index)
 

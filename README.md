@@ -1,6 +1,6 @@
 
 Apprentissage progressif de Kubernetes en 8 blocs. Après chaque bloc ajout des nouvelles compétences acquises au projet DaaS-k8s-v2.
-## Kubernetes : Les bases
+## 1. Kubernetes : Les bases
 
 I. [**Introduction Kubernetes**](1-Les-Bases_Notions.md#i-introduction-kubernetes)
 1. [Présentation de Kubernetes](1-Les-Bases_Notions.md#1-présentation-de-kubernetes)
@@ -38,86 +38,88 @@ VI. [**Deployments**](1-Les-Bases_Notions.md#vi-deployments)
 1. [Deployments : présentation](1-Les-Bases_Notions.md#1-deployments--présentation)
 2. [Rollouts strategies](1-Les-Bases_Notions.md#2-rollouts-strategies)
 
-## Kubernetes : Les services
+## 2. Kubernetes : Les services
 
-6. **Services - ClusterIP** - Exposition interne cluster
+I. [**Services - Présentation**](2-Les-Services_Notions.md#i-services--présentation)
 
-7. **Services - NodePort** - Exposition externe via port node
+II. [**Services - ClusterIP**](2-Les-Services_Notions.md#ii-services--clusterip) - Exposition interne cluster
 
-8. **Services - LoadBalancer** - Intégration cloud providers
+III. [**Services - NodePort**](2-Les-Services_Notions.md#iii-services--nodeport) - Exposition externe via port node
 
-9. **Ingress Introduction** - Routage HTTP/HTTPS
+IV. [**Services - LoadBalancer**](2-Les-Services_Notions.md#ii-services--loadbalancer) - Intégration cloud providers
 
-10. **Ingress Traefik** (K3s intégré) - Configuration pratique
+V. [**Ingress Introduction**](2-Les-Services_Notions.md#v-ingress-introduction) - Routage HTTP/HTTPS
 
-## Kubernetes : Les volumes
+VI. [**Ingress Traefik**](2-Les-Services_Notions.md#vi-ingress-traefik) (K3s intégré) - Configuration pratique
 
-11. **Volumes** - Types volumes (emptyDir, hostPath, etc.)
+## 3. Kubernetes : Les volumes
 
-12. **PersistentVolumes (PV)** - Abstraction stockage
+I. [**Volumes**](3-Les-Volumes_Notions.md#i-volumes) - Types volumes (emptyDir, hostPath, etc.)
 
-13. **PersistentVolumeClaims (PVC)** - Demande stockage
+II. [**PersistentVolumes (PV)**](3-Les-Volumes_Notions.md#ii-persistentvolumes-pv) - Abstraction stockage
 
-14. **StorageClasses** - Provisioning dynamique
+III. [**PersistentVolumeClaims (PVC)**](3-Les-Volumes_Notions.md#iii-persistentvolumesclaims-pvc) - Demande stockage
 
-15. **NFS Volumes** - Montage NFS dans pods
+IV. [**StorageClasses**](3-Les-Volumes_Notions.md#iv-storageclasses) - Provisioning dynamique
 
-## Kubernetes : Configuration & Secrets
+V. [**NFS Volumes**](3-Les-Volumes_Notions.md#v-nfs-volumes) - Montage NFS dans pods
 
-16. **ConfigMaps** - Configuration externalisée
+## 4. Kubernetes : Configuration & Secrets
 
-17. **Secrets** - Credentials sensibles
+I. [**ConfigMaps**](4-Configuration-&-Secrets_Notions.md#i-configmaps) - Configuration externalisée
 
-18. **Environment Variables** - Injection config dans pods
+II. [**Secrets**](4-Configuration-&-Secrets_Notions.md#ii-secrets) - Credentials sensibles
 
-19. **Volume ConfigMaps/Secrets** - Montage fichiers config
+III. [**Environment Variables**](4-Configuration-&-Secrets_Notions.md#iii-environment-variables) - Injection config dans pods
 
-20. **Best Practices Config** - Patterns recommandés
+IV. [**Volume ConfigMaps/Secrets**](4-Configuration-&-Secrets_Notions.md#iv-configmapssecrets) - Montage fichiers config
 
-## Helm :
+V. [**Best Practices Config**](4-Configuration-&-Secrets_Notions.md#v-best-practice-config) - Patterns recommandés
 
-21. **Introduction Helm** - Pourquoi Helm, concepts charts
+## 5. Helm
 
-22. **Installation Helm** - Setup Helm 3
+I. [**Introduction Helm**](5-Helm_Notions.md#i-introduction-helm) - Pourquoi Helm, concepts charts
 
-23. **Déployer Charts** - Helm install, repos publics
+II. [**Installation Helm**](5-Helm_Notions.md#ii-installation-helm) - Setup Helm 3
 
-24. **Values.yaml** - Customisation charts
+III. [**Déployer des Charts**](5-Helm_Notions.md#iii-déployer-des-charts) - Helm install, repos publics
 
-25. **Créer Chart Custom** - Structure, templates basiques
+IV. [**Values.yaml**](5-Helm_Notions.md#iv-valuesyaml) - Customisation charts
 
-## `kubectl` :
+V. [**Créer des Charts Custom**](5-Helm_Notions.md#v-créer-des-charts-custom) - Structure, templates basiques
 
-26. **kubectl logs** - Consulter logs containers
+## 6. `kubectl`
 
-27. **kubectl describe** - Diagnostiquer problèmes ressources
+I. [**`kubectl logs`**](6-kubectl_Notions.md#i-kubectl-logs) - Isolation logique ressources
 
-28. **kubectl exec** - Shell dans pod running
+II. [**`kubectl describe`**](6-kubectl_Notions.md#ii-kubectl-describe) - Diagnostiquer problèmes ressources
 
-29. **Events K8s** - Événements cluster
+III. [**`kubectl exec`**](6-kubectl_Notions.md#iii-kubectl-exec) - Shell dans pod running
 
-30. **Patterns Erreurs Courantes** - ImagePullBackOff, CrashLoopBackOff, etc.
+IV. [**Events K8s**](6-kubectl_Notions.md#iv-events-k8s) - Événements cluster
 
-## Kubernetes : Sécurité & accès
+V. [**Patterns d'Erreurs Courantes**](6-kubectl_Notions.md#v-patterns-derreurs-courantes) - ImagePullBackOff, CrashLoopBackOff, etc.
 
-31. **RBAC - Rôles & RoleBindings** - Contrôle accès ressources
+## 7. Kubernetes : Sécurité & accès
 
-32. **ServiceAccounts** - Identité pods
+I. [**RBAC - Rôles & RoleBindings**](7-Sécurité-&-Accès_Notions.md#i-rbac--rôles--rolebindings) - Contrôle accès ressources
 
-33. **Network Policies** - Segmentation réseau pods
+II. [**ServiceAccounts**](7-Sécurité-&-Accès_Notions.md#ii-serviceaccounts) - Identité pods
 
-34. **Security Context** - runAsUser, capabilities, etc.
+III. [**Network Policies**](7-Sécurité-&-Accès_Notions.md#iii-network-policies) - Segmentation réseau pods
 
-35. **Pod Security Standards** - Restricted, Baseline, Privileged
+IV. [**Security Context**](7-Sécurité-&-Accès_Notions.md#iv-security-context) - runAsUser, capabilities, etc.
 
-## Kubernetes : Ressources & workloads
+V. [**Pod Security Standards**](7-Sécurité-&-Accès_Notions.md#v-pod-security-standards) - Restricted, Baseline, Privileged
 
-36. **Namespaces** - Isolation logique ressources
+## 8. Kubernetes : Ressources & workloads
 
-37. **Resource Quotas** - Limites ressources namespace
+I. [**Namespaces**](8-Ressources-&-Workloads_Notions.md#i-namespaces) - Isolation logique ressources
 
-38. **LimitRanges** - Limites par pod/container
+II. [**Resource Quotas**](8-Ressources-&-Workloads_Notions.md#ii-resource-quotas) - Limites ressources namespace
 
-39. **DaemonSets** - 1 pod par node (monitoring, logs)
+III. [**LimitRanges**](8-Ressources-&-Workloads_Notions.md#iii-limitranges) - Limites par pod/container
 
-40. **StatefulSets** - Apps stateful (bases de données)
+IV. [**DaemonSets**](8-Ressources-&-Workloads_Notions.md#iv-daemonsets) - 1 pod par node (monitoring, logs)
+
+V. [**StatefulSets**](8-Ressources-&-Workloads_Notions.md#v-statefulsets) - Apps stateful (bases de données)

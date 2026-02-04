@@ -1,30 +1,51 @@
-- 1. **Services - ClusterIP** - Exposition interne cluster
+<a id="index"></a>
+**Index** :
 
-- 2. **Services - NodePort** - Exposition externe via port node
+I. [**Services - Présentation**](#i-services--présentation)
 
-- 3. **Services - LoadBalancer** - Intégration cloud providers
+II. [**Services - ClusterIP**](#ii-services--clusterip) - Exposition interne cluster
 
-- 4. **Ingress Introduction** - Routage HTTP/HTTPS
+III. [**Services - NodePort**](#iii-services--nodeport) - Exposition externe via port node
 
-- 5. **Ingress Traefik** (K3s intégré) - Configuration pratique
+IV. [**Services - LoadBalancer**](#ii-services--loadbalancer) - Intégration cloud providers
 
-## 1. **Services - ClusterIP**
+V. [**Ingress Introduction**](#v-ingress-introduction) - Routage HTTP/HTTPS
 
+VI. [**Ingress Traefik**](#vi-ingress-traefik) (K3s intégré) - Configuration pratique
 
-
-## 2. **Services - NodePort**
-
-
-
-## 3. **Services - LoadBalancer**
-
-
-
-## 4. **Ingress Introduction**
+---
+<a id="i-services--présentation"></a>
+# I. [**Services : Présentation**](#index)
 
 
 
-## 5. **Ingress Traefik**
+---
+<a id="ii-services--clusterip"></a>
+# II. [**Services : ClusterIP**](#index)
+
+
+
+---
+<a id="iii-services--nodeport"></a>
+# III. [**Services : NodePort**](#index)
+
+
+
+---
+<a id="vi-services--loadbalancer"></a>
+# IV. [**Services : LoadBalancer**](#index)
+
+
+
+---
+<a id="v-ingress-introduction"></a>
+# V. [**Ingress Introduction**](#index)
+
+
+
+---
+<a id="vi-ingress-traefik"></a>
+# VI. [**Ingress Traefik**](#index)
 
 
 

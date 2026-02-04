@@ -1,28 +1,41 @@
-- 1. **Namespaces** - Isolation logique ressources
+<a id="index"></a>
+**Index** :
 
-- 2. **Resource Quotas** - Limites ressources namespace
+I. [**Namespaces**](#i-namespaces) - Isolation logique ressources
 
-- 3. **LimitRanges** - Limites par pod/container
+II. [**Resource Quotas**](#ii-resource-quotas) - Limites ressources namespace
 
-- 4. **DaemonSets** - 1 pod par node (monitoring, logs)
+III. [**LimitRanges**](#iii-limitranges) - Limites par pod/container
 
-- 5. **StatefulSets** - Apps stateful (bases de données)
+IV. [**DaemonSets**](#iv-daemonsets) - 1 pod par node (monitoring, logs)
 
-## 1. **Namespaces**
+V. [**StatefulSets**](#v-statefulsets) - Apps stateful (bases de données)
 
-
-
-## 2. **Resource Quotas**
-
-
-
-## 3. **LimitRanges**
+---
+<a id="i-namespaces"></a>
+# I. [**Namespaces**](#index)
 
 
 
-## 4. **DaemonSets**
+---
+<a id="ii-resource-quotas"></a>
+# II. [**Resource Quotas**](#index)
 
 
 
-## 5. **StatefulSets**
+---
+<a id="iii-limitranges"></a>
+# III. [**LimitRanges**](#index)
+
+
+
+---
+<a id="iv-daemonsets"></a>
+# IV. [**DaemonSets**](#index)
+
+
+
+---
+<a id="v-statefulsets"></a>
+# V. [**StatefulSets**](#index)
 

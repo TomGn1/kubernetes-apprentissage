@@ -1,28 +1,42 @@
-- 1. **ConfigMaps** - Configuration externalisée
+<a id="index"></a>
+**Index** :
 
-- 2. **Secrets** - Credentials sensibles
+I. [**ConfigMaps**](#i-configmaps) - Configuration externalisée
 
-- 3. **Environment Variables** - Injection config dans pods
+II. [**Secrets**](#ii-secrets) - Credentials sensibles
 
-- 4. **Volume ConfigMaps/Secrets** - Montage fichiers config
+III. [**Environment Variables**](#iii-environment-variables) - Injection config dans pods
 
-- 5. **Best Practices Config** - Patterns recommandés
+IV. [**Volume ConfigMaps/Secrets**](#iv-configmapssecrets) - Montage fichiers config
 
-## 1. **ConfigMaps**
+V. [**Best Practices Config**](#v-best-practice-config) - Patterns recommandés
 
-
-
-## 2. **Secrets**
-
-
-
-## 3. **Environment Variables**
+---
+<a id="i-configmaps"></a>
+# I. [**ConfigMaps**](#index)
 
 
 
-## 4. **Volume ConfigMaps/Secrets**
+---
+<a id="ii-secrets"></a>
+# II. [**Secrets**](#index)
 
 
 
-## 5. **Best Practices Config**
+---
+<a id="iii-environment-variables"></a>
+# III. [**Environment Variables**](#index)
+
+
+
+---
+<a id="iv-configmapssecrets"></a>
+# IV. [**Volume ConfigMaps/Secrets**](#index)
+
+
+
+---
+<a id="v-best-practice-config"></a>
+# V. [**Best Practices Config**](#index)
+
 
