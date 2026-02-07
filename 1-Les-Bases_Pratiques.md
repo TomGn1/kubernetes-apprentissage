@@ -1,4 +1,4 @@
-## **Mise en pratique des premières** [**notions**](1-Les-Bases_Notions.md)
+## **Mise en pratique des [notions](1-Les-Bases_Notions.md) sur les bases de Kubernetes**.
 
 ---
 <a id="index"></a>
@@ -192,7 +192,7 @@ kubectl <verbe> <ressources>
 
 - verbes utiles : `get`, `describe`, `apply`, `create`, etc.
 - option de verbosité : `-v<level>`
-- Ressources utiles : `pods`, `nodes`, `deployment`, `replicaset`, etc.
+- ressources utiles : `pods`, `nodes`, `deployment`, `replicaset`, etc.
 - option de sorties : `-o json`, `-o yaml`,  `-o jsonpath`, `-o wide`, etc.
 
 **Quelques exemples de commandes `kubectl`** :

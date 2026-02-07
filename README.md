@@ -1,10 +1,8 @@
 
-Apprentissage progressif de Kubernetes en 8 blocs.
-
+Apprentissage progressif de Kubernetes en 8 blocs. Après chaque bloc ajout des nouvelles compétences acquises au projet DaaS-k8s-v2.
 ## 1. Kubernetes : Les bases
 
 I. [**Introduction Kubernetes**](1-Les-Bases_Notions.md#i-introduction-kubernetes)
-
 1. [Présentation de Kubernetes](1-Les-Bases_Notions.md#1-présentation-de-kubernetes)
 2. [Rappel sur la conteneurisation](1-Les-Bases_Notions.md#2-rappel-sur-la-conteneurisation)
 3. [Contexte de Kubernetes](1-Les-Bases_Notions.md#3-contexte-de-kubernetes)
@@ -13,7 +11,6 @@ I. [**Introduction Kubernetes**](1-Les-Bases_Notions.md#i-introduction-kubernete
 6. [Exemples de ce que permet Kubernetes](1-Les-Bases_Notions.md#6-exemples-de-ce-que-permet-kubernetes)
 
 II. [**Architecture Cluster K8s**](1-Les-Bases_Notions.md#ii-architecture-cluster-k8s)
-
 1. [Déclaratif vs Impératif](1-Les-Bases_Notions.md#1-déclaratif-vs-impératif)
 2. [Master et Worker](1-Les-Bases_Notions.md#2-master-et-worker)
 3. [Introduction au Pod](1-Les-Bases_Notions.md#3-introduction-au-pod)
@@ -21,13 +18,11 @@ II. [**Architecture Cluster K8s**](1-Les-Bases_Notions.md#ii-architecture-cluste
 5. [Scheduling](1-Les-Bases_Notions.md#5-scheduling)
 
 III. [**L'APIServer**](1-Les-Bases_Notions.md#iii-lapiserver)
-
 1. [Point d'entrée de l'APIServer : les clients](1-Les-Bases_Notions.md#1-point-dentrée-de-lapiserver--les-clients)
 2. [Kube-APIServer : Authentification et Autorisation](1-Les-Bases_Notions.md#2-kube-apiserver--authentification-et-autorisation)
 3. [KubeConfig](1-Les-Bases_Notions.md#3-kubeconfig)
 
 IV. [**Pods**](1-Les-Bases_Notions.md#iv-pods)
-
 1. [Rappel sur le pod](1-Les-Bases_Notions.md#1-rappel-sur-le-pod)
 2. [Exemple de fonctionnement d'un Pod](1-Les-Bases_Notions.md#2-exemple-de-fonctionnement-dun-pod)
 3. [Contenu d'un Pod](1-Les-Bases_Notions.md#3-contenu-dun-pod)
@@ -36,12 +31,10 @@ IV. [**Pods**](1-Les-Bases_Notions.md#iv-pods)
 6. [Les `status`](1-Les-Bases_Notions.md#6-les-status)
 
 V. [**ReplicaSets**](1-Les-Bases_Notions.md#v-replicasets)
-
 1. [ReplicaSets : présentation](1-Les-Bases_Notions.md#1-replicasets--présentation)
 2. [`labels` et `selector`](1-Les-Bases_Notions.md#2-labels-et-selector)
 
 VI. [**Deployments**](1-Les-Bases_Notions.md#vi-deployments)
-
 1. [Deployments : présentation](1-Les-Bases_Notions.md#1-deployments--présentation)
 2. [Rollouts strategies](1-Les-Bases_Notions.md#2-rollouts-strategies)
 

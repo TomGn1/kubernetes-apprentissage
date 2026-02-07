@@ -167,8 +167,8 @@ Ils assurent et assument la fonction déclarative mise à disposition par Kubern
 
 > [!NOTE]
 > **Rappel** :
-> **Autorisation** : vérifier les permissions (que pouvez-vous faire ?)
-> **Authentification** : vérifier l'identité (qui êtes-vous ?)
+> - **Autorisation** : vérifier les permissions (que pouvez-vous faire ?)
+>- **Authentification** : vérifier l'identité (qui êtes-vous ?)
 
 - Il faut un nombre impair de Masters, beaucoup de protocoles (ex. raft) se reposent sur un "leader" et des "followers" qui doivent être élus à l'unanimité (pas d'ex-aequo possible).
 - Ils sont souvent peu configurables et gérés par le Cloud provider.
@@ -186,7 +186,8 @@ Ils assurent et assument la fonction déclarative mise à disposition par Kubern
 
 > [!NOTE]
 > **Exemple** :
-> L'adresse de boucle locale 127.0.0.1 d'un Pod donné va être la même pour les containers qui le composent.
+>
+>L'adresse de boucle locale 127.0.0.1 d'un Pod donné va être la même pour les containers qui le composent.
 
 ## 4. Fonctionnement d'un cluster Kubernetes
 
@@ -265,7 +266,7 @@ Dans Kubernetes, lorsqu'on demande la création d'un Deployment ou d'un Pod, le 
 - Il va **prendre en charge les Pods non assignés** afin de les **allouer** de manière à ce qu'ils soient dédiés à des nodes Worker.
 - Deux mécanismes le composent :
 	- Le **filtering** : Il va trier les serveurs par rapport au besoins. Il va écarter de la règle finale de calcul les serveurs qui ne doivent pas être pris en compte.
-	- Le **scoring** : Un fois qu'un pool de serveur potentiel est filtré, le scoring va noter les serveurs afin d'attribuer le pod.
+	- Le **scoring** : Une fois qu'un pool de serveur potentiel est filtré, le scoring va noter les serveurs afin d'attribuer le pod.
 - Le *scheduler* va éditer le *nodeName* de chaque pod par l'*APIServeur* vers l'*etcd* afin que le *kubelet* puisse lire ces informations.
 - Il peut imposer des contraintes à chaque pod : best effort, guaranteed, burstable. Il s'agit de la **sensibilité** des pods (ex. : est ce qu'on veut que le pod soient détruit en dernier recours, ou qu'il soit détruit et recréé à notre convenance).
 - Le *scheduler* peut aussi fournir des métriques sur la planification.
