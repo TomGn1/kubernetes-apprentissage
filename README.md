@@ -1,5 +1,20 @@
+# Kubernetes - Apprentissage
 
-Apprentissage progressif de Kubernetes en 8 blocs. Après chaque bloc ajout des nouvelles compétences acquises au projet DaaS-k8s-v2.
+Mes notes d'apprentissage Kubernetes, synchronisées automatiquement depuis mon vault Obsidian privé.
+
+
+>[!NOTE]
+># CI/CD Automatisé
+>
+>Ce repository est mis à jour automatiquement via GitHub Actions :
+>
+>- **Source** : Vault Obsidian privé (notes personnelles complètes)
+>- **Déclencheur** : Push sur le dossier `Kubernetes/` du repo privé
+>- **Action** : Synchronisation automatique vers ce repo public
+>- **Workflow** : `.github/workflows/sync-k8s.yml`
+
+# Contenu
+
 ## 1. Kubernetes : Les bases
 
 I. [**Introduction Kubernetes**](1-Les-Bases_Notions.md#i-introduction-kubernetes)
