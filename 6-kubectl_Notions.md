@@ -25,7 +25,7 @@ V. [**Patterns d'Erreurs Courantes**](#v-patterns-derreurs-courantes) - ImagePul
 
 ---
 <a id="iii-kubectl-exec"></a>
-# III. [**`kubectl exec`**](#index)
+# III. [**`kubectl exec` & `kubectl run`**](#index)
 
 
 
