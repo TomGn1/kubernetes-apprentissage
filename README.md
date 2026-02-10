@@ -4,7 +4,7 @@ Mes notes d'apprentissage Kubernetes, synchronisées automatiquement depuis mon 
 
 
 >[!NOTE]
-># CI/CD Automatisé
+>## CI/CD Automatisé
 >
 >Ce repository est mis à jour automatiquement via GitHub Actions :
 >
