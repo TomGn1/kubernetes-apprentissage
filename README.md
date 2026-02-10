@@ -8,7 +8,7 @@ Mes notes d'apprentissage Kubernetes, synchronisées automatiquement depuis mon 
 >
 >Ce repository est mis à jour automatiquement via GitHub Actions :
 >
->- **Source** : Vault Obsidian privé (notes personnelles complètes)
+>- **Source** : Vault Obsidian privé (notes personnelles)
 >- **Déclencheur** : Push sur le dossier `Kubernetes/` du repo privé
 >- **Action** : Synchronisation automatique vers ce repo public
 >- **Workflow** : `.github/workflows/sync-k8s.yml`
