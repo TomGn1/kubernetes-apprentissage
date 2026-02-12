@@ -41,6 +41,21 @@ Ainsi, le processus voit exactement le même environnement que l'application du 
 >[!NOTE]
 >La commande `kubectl exec -it ... sh` peut donner l'impression d'entrer dans le conteneur, en réalité on partage simplement son contexte d’exécution.
 
+```bash
+kubectl create deploy nginx --image nginx
+kubectl get pods
+```
+
+```bash
+vagrant@k0s1:~ (⎈|Default:default) $ kubectl get pods
+NAME                     READY   STATUS    RESTARTS   AGE
+nginx-66686b6766-tcks6   1/1     Running   0          41s
+```
+
+```bash
+kubectl exec nginx-66686b6766-tcks6 -
+```
+
 ## 2. `kubectl attach`
 
 `kubectl attach` ne lance **aucun nouveau processus**.
@@ -94,6 +109,17 @@ vagrant@k0s1:~ (⎈|Default:default) $ kubectl get pods
 No resources found in default namespace.
 ```
 
+```bash
+kubectl run test --image debian --rm -ti -- bash
+```
+
+```bash
+apt update && apt install curl -y && curl google.fr
+```
+
+```bash
+kubectl run test --image debian --rm -ti -- /bin/bash -c "apt update && apt install curl -y && curl google.fr"
+```
 
 ---
 <a id="iv-events-k8s"></a>
