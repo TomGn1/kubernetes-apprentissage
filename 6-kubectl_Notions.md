@@ -27,14 +27,34 @@ V. [**Patterns d'Erreurs Courantes**](#v-patterns-derreurs-courantes) - ImagePul
 <a id="iii-kubectl-exec"></a>
 # III. [**`kubectl exec` & `kubectl run`**](#index)
 
-- `kubectl exec` : Un processus est lancé dans les même namespaces que le processus initial du pod ciblé. Quand on lance ce processus on ne va pas "dans le pod" mais on se place "à côté" de celui-ci, pour avoir le même point de vu que lui.
+## 1. `kubectl exec`
 
-- `kubectl attach` : Permet de streamer les flux `stdin`, `sdtout` et `stderr`. On se "plug" sur le stdin, pour lancer des commandes sur sur le stdin du processus, le stdout va retourner les éléments des commandes lancées et stderr va afficher les éléments en erreurs.
+`kubectl exec` permet de lancer **un nouveau processus** dans le conteneur ciblé d'un pod.
+
+Ce processus n'est pas exécuté _dans_ le conteneur au sens physique (on ne “rentre” pas dans le pod) mais Kubernetes le crée **dans les mêmes namespaces** que le processus principal du conteneur (PID, réseau, filesystem, etc.).
+
+Ainsi, le processus voit exactement le même environnement que l'application du conteneur. On se place donc _à côté_ du processus principal, avec le même point de vue sur le système.
 
 >[!NOTE]
->On en se place jamais dans un conteneur mais à "côté" de celui-ci, dans son namespaces.
->
+>La commande `kubectl exec -it ... sh` peut donner l'impression d'entrer dans le conteneur, en réalité on partage simplement son contexte d’exécution.
 
+## 2. `kubectl attach`
+
+`kubectl attach` ne lance **aucun nouveau processus**.
+
+Cette commande se contente de se connecter aux flux d'entrée/sortie (`stdin`, `stdout`, `stderr`) du processus principal déjà en cours dans le conteneur.
+
+On agit donc comme un terminal branché directement sur l'application existante :
+- ce que l'on tape → va dans le `stdin` du processus
+- ce que le programme affiche → revient via `stdout` / `stderr`
+
+On interagit donc avec le processus tel qu'il tourne déjà, sans en créer un nouveau.
+
+>[!IMPORTANT]
+>On en se place jamais _dans_ un conteneur.
+>Kubernetes ne fait que créer ou connecter un processus partageant les namespaces du conteneur.
+
+## 3. `kubectl run`
 
 ---
 <a id="iv-events-k8s"></a>
