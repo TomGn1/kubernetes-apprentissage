@@ -56,6 +56,10 @@ On interagit donc avec le processus tel qu'il tourne déjà, sans en créer un n
 
 ## 3. `kubectl run`
 
+`kubectl run` permet de **crée un pod**.
+
+Dans un contexte de résolution de problèmes, il peut être utiliser pour générer des pods l
+
 ---
 <a id="iv-events-k8s"></a>
 # IV. [**Events K8s**](#index)
