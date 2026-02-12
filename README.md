@@ -109,7 +109,7 @@ I. [**`kubectl logs`**](6-kubectl_Notions.md#i-kubectl-logs) - Isolation logique
 
 II. [**`kubectl describe`**](6-kubectl_Notions.md#ii-kubectl-describe) - Diagnostiquer problèmes ressources
 
-III. [**`kubectl exec`**](6-kubectl_Notions.md#iii-kubectl-exec) - Shell dans pod running
+III. [**`kubectl exec` & `kubectl run`**](6-kubectl_Notions.md#iii-kubectl-exec--kubectl-run) - Shell dans pod running
 
 IV. [**Events K8s**](6-kubectl_Notions.md#iv-events-k8s) - Événements cluster
 

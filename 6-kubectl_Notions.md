@@ -5,7 +5,7 @@ I. [**`kubectl logs`**](#i-kubectl-logs) - Consulter logs containers
 
 II. [**`kubectl describe`**](#ii-kubectl-describe) - Diagnostiquer problèmes ressources
 
-III. [**`kubectl exec`**](#iii-kubectl-exec) - Shell dans pod running
+III. [**`kubectl exec` & `kubectl run`**](#iii-kubectl-exec--kubectl-run) - Shell dans pod running
 
 IV. [**Events K8s**](#iv-events-k8s) - Événements cluster
 
