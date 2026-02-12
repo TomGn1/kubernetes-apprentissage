@@ -53,7 +53,43 @@ nginx-66686b6766-tcks6   1/1     Running   0          41s
 ```
 
 ```bash
-kubectl exec nginx-66686b6766-tcks6 -
+kubectl exec nginx-66686b6766-tcks6 -- cat /etc/*elea*
+```
+
+```bash
+vagrant@k0s1:~ (⎈|Default:default) $ kubectl exec nginx-66686b6766-tcks6 -- cat /etc/*elea*
+PRETTY_NAME="Debian GNU/Linux 13 (trixie)"
+NAME="Debian GNU/Linux"
+VERSION_ID="13"
+VERSION="13 (trixie)"
+VERSION_CODENAME=trixie
+DEBIAN_VERSION_FULL=13.3
+ID=debian
+HOME_URL="https://www.debian.org/"
+SUPPORT_URL="https://www.debian.org/support"
+BUG_REPORT_URL="https://bugs.debian.org/"
+cat: /etc/cloud-release: No such file or directory
+command terminated with exit code 1
+```
+
+```bash
+kubectl exec nginx-66686b6766-tcks6 -- env
+```
+
+```bash
+kubectl exec nginx-66686b6766-tcks6 -- /bin/bash -c "apt update && apt install -y iputils-ping && ping google.fr
+```
+
+```bash
+kubectl exec nginx-66686b6766-tcks6 -ti -- bash
+```
+
+```bash
+kubectl exec nginx-66686b6766-tcks6 -ti -c <nomDuConteneur> -- bash
+```
+
+```bash
+kubectl get pods -o name | xargs -I {} kubectl exec {} -- cat /etc/hosts | grep nginx
 ```
 
 ## 2. `kubectl attach`
