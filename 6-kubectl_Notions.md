@@ -56,9 +56,11 @@ On interagit donc avec le processus tel qu'il tourne déjà, sans en créer un n
 
 ## 3. `kubectl run`
 
-`kubectl run` permet de **crée un pod**.
+`kubectl run` permet de **crée rapidement un pod** à partir d’une image conteneur.
 
-Dans un contexte de résolution de problèmes, il peut être utiliser pour générer des pods l
+Cette commande est souvent utilisée dans un contexte de test ou de dépannage pour lancer un pod temporaire dans un namespace donné. On peut ainsi disposer rapidement d'un environnement minimal pour vérifier la connectivité réseau, tester une image ou exécuter des commandes de diagnostic.
+
+Par défaut, `kubectl run` crée un pod simple, sans contrôleur (Deployment, ReplicaSet, etc.), ce qui le rend adapté aux usages ponctuels plutôt qu'au déploiement d'applications en production.
 
 ---
 <a id="iv-events-k8s"></a>
