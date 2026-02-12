@@ -27,6 +27,13 @@ V. [**Patterns d'Erreurs Courantes**](#v-patterns-derreurs-courantes) - ImagePul
 <a id="iii-kubectl-exec"></a>
 # III. [**`kubectl exec` & `kubectl run`**](#index)
 
+- `kubectl exec` : Un processus est lancé dans les même namespaces que le processus initial du pod ciblé. Quand on lance ce processus on ne va pas "dans le pod" mais on se place "à côté" de celui-ci, pour avoir le même point de vu que lui.
+
+- `kubectl attach` : Permet de streamer les flux `stdin`, `sdtout` et `stderr`. On se "plug" sur le stdin, pour lancer des commandes sur sur le stdin du processus, le stdout va retourner les éléments des commandes lancées et stderr va afficher les éléments en erreurs.
+
+>[!NOTE]
+>On en se place jamais dans un conteneur mais à "côté" de celui-ci, dans son namespaces.
+>
 
 
 ---
