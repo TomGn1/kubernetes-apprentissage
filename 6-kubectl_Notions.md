@@ -65,6 +65,36 @@ Cette commande est souvent utilisée dans un contexte de test ou de dépannage p
 
 Par défaut, `kubectl run` crée un pod simple, sans contrôleur (Deployment, ReplicaSet, etc.), ce qui le rend adapté aux usages ponctuels plutôt qu'au déploiement d'applications en production.
 
+```bash
+kubectl run test --image alpine --restart=Never --rm -ti -- echo 1
+```
+
+```bash
+vagrant@k0s1:~ (⎈|Default:default) $ kubectl run test --image alpine --restart=Never --rm -ti -- echo 1
+1
+pod "test" deleted from default namespace
+vagrant@k0s1:~ (⎈|Default:default) $ kubectl get pods
+No resources found in default namespace.
+```
+
+```bash
+kubectl run test --image curlimages/curl --restart=Never --rm -ti -- curl google.fr
+```
+
+```bash
+vagrant@k0s1:~ (⎈|Default:default) $ kubectl run test --image curlimages/curl --restart=Never --rm -ti -- curl google.fr
+<HTML><HEAD><meta http-equiv="content-type" content="text/html;charset=utf-8">
+<TITLE>301 Moved</TITLE></HEAD><BODY>
+<H1>301 Moved</H1>
+The document has moved
+<A HREF="http://www.google.fr/">here</A>.
+</BODY></HTML>
+pod "test" deleted from default namespace
+vagrant@k0s1:~ (⎈|Default:default) $ kubectl get pods
+No resources found in default namespace.
+```
+
+
 ---
 <a id="iv-events-k8s"></a>
 # IV. [**Events K8s**](#index)
