@@ -93,14 +93,14 @@ kubectl exec nginx-66686b6766-tcks6 -- env
 >Pour chaque pod du cluster, exécute `cat /etc/hosts`, puis affiche uniquement les lignes contenant nginx.
 ### 1.2 Exemple : debug
 
-- Pour exécuter une commande complexe dans le conteneur :
+Pour exécuter une commande complexe dans le conteneur :
 ```bash
 kubectl exec nginx-66686b6766-tcks6 -- /bin/bash -c "apt update && apt install -y iputils-ping && ping google.fr"
 ```
 > Dans cette exemple, le Shell Bash est lancé dans le conteneur, et exécute la commande `apt update && apt install -y iputils-ping && ping google.fr`.
 ### 1.3 Exemple : interaction
 
-- La commande suivante permet d'ouvrir le terminal interactif du Pod :
+La commande suivante permet d'ouvrir le terminal interactif du Pod :
 ```bash
 kubectl exec nginx-66686b6766-tcks6 -ti -- bash
 ```
@@ -135,6 +135,7 @@ Cette commande est souvent utilisée dans un contexte de test ou de dépannage p
 
 Par défaut, `kubectl run` crée un pod simple, sans contrôleur (Deployment, ReplicaSet, etc.), ce qui le rend adapté aux usages ponctuels plutôt qu'au déploiement d'applications en production.
 
+Les exemples suivants illustrent différents usages courants de `kubectl run`
 ### 3.1 Exemple : inspection
 
 Pour lancer un Pod temporaire dans le même namespace Kubernetes afin d'effectuer des tests :
@@ -142,10 +143,11 @@ Pour lancer un Pod temporaire dans le même namespace Kubernetes afin d'effectue
 kubectl run test --image alpine --restart=Never --rm -ti -- echo 1
 ```
 Cette commande permet :
-- générer un pod dans un namespace
-- `--restart=Never` crée un pod simple sans contrôleur ni redémarrage automatique (évite qu'il entre dans un `CrashLoopBackOff`)
-- `--rm` détruit le Pod à la fin de la commande
-- `-ti` le mode terminal intéractif pour entrer la commande `echo 1`
+- Générer un Pod dans le namespace courant.
+- `--restart=Never` crée un Pod simple sans contrôleur ni redémarrage automatique (évite le redémarrage automatique en cas d'échec).
+- `--rm` détruit le Pod à la fin de la commande.
+- `-ti` active le mode interactif, principalement utile pour ouvrir un shell dans le Pod.
+- `-- echo 1` la commande qui sera lancée dans le Pod.
 
 _Résultat_ :
 ```bash
@@ -158,7 +160,7 @@ No resources found in default namespace.
 
 ### 3.2 Exemple : debug
 
-
+Pour lancer une commande `curl`, on peut utiliser directement une image dédiée a cet effet :
 ```bash
 kubectl run test --image curlimages/curl --restart=Never --rm -ti -- curl google.fr
 ```
@@ -179,7 +181,7 @@ No resources found in default namespace.
 
 ### 3.3 Exemple : interaction
 
-- Lancer un Pod de teste et accéder à son terminal :
+- Lancer un Pod de test et accéder à son terminal :
 ```bash
 kubectl run test --image debian --rm -ti -- bash
 ```
@@ -193,6 +195,11 @@ apt update && apt install curl -y && curl google.fr
 ```bash
 kubectl run test --image debian --rm -ti -- /bin/bash -c "apt update && apt install curl -y && curl google.fr"
 ```
+
+>[!TIP]
+>- **Analogie** : Ces Pods temporaires agissent comme une boîte à outils jetable dans le cluster.
+>- Le pod agit comme un environnement Linux éphémère exécuté directement dans le cluster.
+
 
 ---
 <a id="iv-events-k8s"></a>
