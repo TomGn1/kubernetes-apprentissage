@@ -41,6 +41,9 @@ Ainsi, le processus voit exactement le même environnement que l'application du 
 >[!NOTE]
 >La commande `kubectl exec -it ... sh` peut donner l'impression d'entrer dans le conteneur, en réalité on partage simplement son contexte d’exécution.
 
+### Exemples : inspection 
+
+- Création d'un déploiement `nginx` et récupération du nom du Pod :
 ```bash
 kubectl create deploy nginx --image nginx
 kubectl get pods
@@ -52,10 +55,13 @@ NAME                     READY   STATUS    RESTARTS   AGE
 nginx-66686b6766-tcks6   1/1     Running   0          41s
 ```
 
+- On peut lancer une commande avec `kubectl exec` en la lançant après un `--`, par exemple pour afficher le contenu d'un fichier, on peut lancer `cat /etc/*elea*` :
+
 ```bash
 kubectl exec nginx-66686b6766-tcks6 -- cat /etc/*elea*
 ```
 
+- Résultat :
 ```bash
 vagrant@k0s1:~ (⎈|Default:default) $ kubectl exec nginx-66686b6766-tcks6 -- cat /etc/*elea*
 PRETTY_NAME="Debian GNU/Linux 13 (trixie)"
@@ -72,21 +78,30 @@ cat: /etc/cloud-release: No such file or directory
 command terminated with exit code 1
 ```
 
+- On peut utiliser `env` pour afficher les variables d'environnement d'un Pod donné :
 ```bash
 kubectl exec nginx-66686b6766-tcks6 -- env
 ```
 
+### Exemple : Debug
+
+- La commande suivante permet de lancer la commande directement dans l'entrée standard du Pod :
 ```bash
 kubectl exec nginx-66686b6766-tcks6 -- /bin/bash -c "apt update && apt install -y iputils-ping && ping google.fr"
 ```
 
+### Exemple : Interaction
+
+- La commande suivante permet d'ouvrir le terminal interactif du Pod :
 ```bash
 kubectl exec nginx-66686b6766-tcks6 -ti -- bash
 ```
 
-```bash
-kubectl exec nginx-66686b6766-tcks6 -ti -c <nomDuConteneur> -- bash
-```
+>[!NOTE]
+>Dans le cas d'un Deployment avec plusieurs pods il faut préciser le Pod avec lequel on veut interagir :
+>```bash
+>kubectl exec nginx-66686b6766-tcks6 -ti -c <nomDuPod> -- bash
+>```
 
 ```bash
 kubectl get pods -o name | xargs -I {} kubectl exec {} -- cat /etc/hosts | grep nginx
