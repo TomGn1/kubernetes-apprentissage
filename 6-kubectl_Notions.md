@@ -6,9 +6,9 @@ I. [**`kubectl logs`**](#i-kubectl-logs) - Consulter logs containers
 II. [**`kubectl describe`**](#ii-kubectl-describe) - Diagnostiquer problèmes ressources
 
 III. [**`kubectl exec` & `kubectl run`**](#iii-kubectl-exec--kubectl-run)
-1. [`kubectl exec`](1-kubectl-exec)
-2. [`kubectl attach`](2-kubectl-attach)
-3. [`kubectl run`](3-kubectl-run)
+1. [`kubectl exec`](#1-kubectl-exec)
+2. [`kubectl attach`](#2-kubectl-attach)
+3. [`kubectl run`](#3-kubectl-run)
 
 IV. [**Events K8s**](#iv-events-k8s) - Événements cluster
 
