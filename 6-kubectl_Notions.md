@@ -41,6 +41,7 @@ Ainsi, le processus voit exactement le même environnement que l'application du 
 >[!NOTE]
 >La commande `kubectl exec -it ... sh` peut donner l'impression d'entrer dans le conteneur, en réalité on partage simplement son contexte d’exécution.
 
+Les exemples suivants illustrent différents usages courants de `kubectl exec`
 ### Exemples : inspection 
 
 - Création d'un déploiement `nginx` et récupération du nom du Pod :
@@ -49,6 +50,7 @@ kubectl create deploy nginx --image nginx
 kubectl get pods
 ```
 
+_Résultat_ :
 ```bash
 vagrant@k0s1:~ (⎈|Default:default) $ kubectl get pods
 NAME                     READY   STATUS    RESTARTS   AGE
@@ -61,7 +63,7 @@ nginx-66686b6766-tcks6   1/1     Running   0          41s
 kubectl exec nginx-66686b6766-tcks6 -- cat /etc/*elea*
 ```
 
-- Résultat :
+_Résultat_ :
 ```bash
 vagrant@k0s1:~ (⎈|Default:default) $ kubectl exec nginx-66686b6766-tcks6 -- cat /etc/*elea*
 PRETTY_NAME="Debian GNU/Linux 13 (trixie)"
@@ -83,14 +85,20 @@ command terminated with exit code 1
 kubectl exec nginx-66686b6766-tcks6 -- env
 ```
 
-### Exemple : Debug
+>[!TIP]
+>Exemple d'inspection automatisée sur plusieurs pods :
+>```bash
+>kubectl get pods -o name | xargs -I {} kubectl exec {} -- cat /etc/hosts | grep nginx
+>```
+>Pour chaque pod du cluster, exécute `cat /etc/hosts`, puis affiche uniquement les lignes contenant nginx.
+### Exemple : debug
 
-- La commande suivante permet de lancer la commande directement dans l'entrée standard du Pod :
+- Pour exécuter une commande complexe dans le conteneur :
 ```bash
 kubectl exec nginx-66686b6766-tcks6 -- /bin/bash -c "apt update && apt install -y iputils-ping && ping google.fr"
 ```
-
-### Exemple : Interaction
+> Dans cette exemple, le Shell Bash est lancé dans le conteneur, et exécute la commande `apt update && apt install -y iputils-ping && ping google.fr`.
+### Exemple : interaction
 
 - La commande suivante permet d'ouvrir le terminal interactif du Pod :
 ```bash
@@ -98,14 +106,12 @@ kubectl exec nginx-66686b6766-tcks6 -ti -- bash
 ```
 
 >[!NOTE]
->Dans le cas d'un Deployment avec plusieurs pods il faut préciser le Pod avec lequel on veut interagir :
+>Dans le cas d’un pod contenant plusieurs conteneurs, il faut préciser le conteneur avec lequel on veut interagir :
 >```bash
->kubectl exec nginx-66686b6766-tcks6 -ti -c <nomDuPod> -- bash
+>kubectl exec nginx-66686b6766-tcks6 -ti -c <nomDuConteneur> -- bash
 >```
 
-```bash
-kubectl get pods -o name | xargs -I {} kubectl exec {} -- cat /etc/hosts | grep nginx
-```
+
 
 ## 2. `kubectl attach`
 
