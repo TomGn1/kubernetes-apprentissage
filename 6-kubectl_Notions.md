@@ -131,14 +131,23 @@ On interagit donc avec le processus tel qu'il tourne déjà, sans en créer un n
 
 `kubectl run` permet de **créer rapidement un pod** à partir d’une image conteneur.
 
-Cette commande est souvent utilisée dans un contexte de test ou de dépannage pour lancer un pod temporaire dans un namespace donné. On peut ainsi disposer rapidement d'un environnement minimal pour vérifier la connectivité réseau, tester une image ou exécuter des commandes de diagnostic.
+Cette commande est souvent utilisée dans un contexte de test ou de dépannage pour lancer un pod temporaire dans un namespace Kubernetes donné. On peut ainsi disposer rapidement d'un environnement minimal pour vérifier la connectivité réseau, tester une image ou exécuter des commandes de diagnostic.
 
 Par défaut, `kubectl run` crée un pod simple, sans contrôleur (Deployment, ReplicaSet, etc.), ce qui le rend adapté aux usages ponctuels plutôt qu'au déploiement d'applications en production.
 
+### 3.1 Exemple : inspection
+
+Pour lancer un Pod temporaire dans le même namespace Kubernetes afin d'effectuer des tests :
 ```bash
 kubectl run test --image alpine --restart=Never --rm -ti -- echo 1
 ```
+Cette commande permet :
+- générer un pod dans un namespace
+- `--restart=Never` crée un pod simple sans contrôleur ni redémarrage automatique (évite qu'il entre dans un `CrashLoopBackOff`)
+- `--rm` détruit le Pod à la fin de la commande
+- `-ti` le mode terminal intéractif pour entrer la commande `echo 1`
 
+_Résultat_ :
 ```bash
 vagrant@k0s1:~ (⎈|Default:default) $ kubectl run test --image alpine --restart=Never --rm -ti -- echo 1
 1
@@ -147,10 +156,14 @@ vagrant@k0s1:~ (⎈|Default:default) $ kubectl get pods
 No resources found in default namespace.
 ```
 
+### 3.2 Exemple : debug
+
+
 ```bash
 kubectl run test --image curlimages/curl --restart=Never --rm -ti -- curl google.fr
 ```
 
+_Résultat_ :
 ```bash
 vagrant@k0s1:~ (⎈|Default:default) $ kubectl run test --image curlimages/curl --restart=Never --rm -ti -- curl google.fr
 <HTML><HEAD><meta http-equiv="content-type" content="text/html;charset=utf-8">
@@ -164,14 +177,19 @@ vagrant@k0s1:~ (⎈|Default:default) $ kubectl get pods
 No resources found in default namespace.
 ```
 
+### 3.3 Exemple : interaction
+
+- Lancer un Pod de teste et accéder à son terminal :
 ```bash
 kubectl run test --image debian --rm -ti -- bash
 ```
 
+- On peut lancer des commandes directement dans le terminal du Pod :
 ```bash
 apt update && apt install curl -y && curl google.fr
 ```
 
+- Il est aussi possible de le faire avec la commande, sans entrer dans le terminal du Pod :
 ```bash
 kubectl run test --image debian --rm -ti -- /bin/bash -c "apt update && apt install curl -y && curl google.fr"
 ```
