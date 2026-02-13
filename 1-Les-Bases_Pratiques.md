@@ -397,7 +397,7 @@ kubectl run -n demo1 nginx --image=nginx -- sleep 10s
 >```
 >- Après la création du conteneur, installer des outils pour débugger comme `iputils-ping` ou `curl`
 >- Le pod `debug` peut ainsi `ping`, ou `curl` le pod `nginx`.
->- Plus de détails dans la partie [dédiée à ce sujet](6-kubectl_Notions.md#iii-kubectl-exec--kubectl-run)
+>- Plus de détails dans la partie [dédiée à ce sujet](6-kubectl_Notions.md#iii-kubectl-exec--kubectl-run#3-kubectl-run)
 
 ## 2. L'option `--dry-run`
 
