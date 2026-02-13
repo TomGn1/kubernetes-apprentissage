@@ -143,7 +143,7 @@ Pour lancer un Pod temporaire dans le même namespace Kubernetes afin d'effectue
 kubectl run test --image alpine --restart=Never --rm -ti -- echo 1
 ```
 Cette commande permet :
-- Générer un Pod dans le namespace courant.
+- De générer un Pod dans le namespace courant.
 - `--restart=Never` crée un Pod simple sans contrôleur ni redémarrage automatique (évite le redémarrage automatique en cas d'échec).
 - `--rm` détruit le Pod à la fin de la commande.
 - `-ti` active le mode interactif, principalement utile pour ouvrir un shell dans le Pod.
