@@ -42,7 +42,7 @@ Ainsi, le processus voit exactement le même environnement que l'application du 
 >La commande `kubectl exec -it ... sh` peut donner l'impression d'entrer dans le conteneur, en réalité on partage simplement son contexte d’exécution.
 
 Les exemples suivants illustrent différents usages courants de `kubectl exec`
-### Exemples : inspection 
+### 1.1 Exemples : inspection 
 
 - Création d'un déploiement `nginx` et récupération du nom du Pod :
 ```bash
@@ -91,14 +91,14 @@ kubectl exec nginx-66686b6766-tcks6 -- env
 >kubectl get pods -o name | xargs -I {} kubectl exec {} -- cat /etc/hosts | grep nginx
 >```
 >Pour chaque pod du cluster, exécute `cat /etc/hosts`, puis affiche uniquement les lignes contenant nginx.
-### Exemple : debug
+### 1.2 Exemple : debug
 
 - Pour exécuter une commande complexe dans le conteneur :
 ```bash
 kubectl exec nginx-66686b6766-tcks6 -- /bin/bash -c "apt update && apt install -y iputils-ping && ping google.fr"
 ```
 > Dans cette exemple, le Shell Bash est lancé dans le conteneur, et exécute la commande `apt update && apt install -y iputils-ping && ping google.fr`.
-### Exemple : interaction
+### 1.3 Exemple : interaction
 
 - La commande suivante permet d'ouvrir le terminal interactif du Pod :
 ```bash
@@ -110,8 +110,6 @@ kubectl exec nginx-66686b6766-tcks6 -ti -- bash
 >```bash
 >kubectl exec nginx-66686b6766-tcks6 -ti -c <nomDuConteneur> -- bash
 >```
-
-
 
 ## 2. `kubectl attach`
 
