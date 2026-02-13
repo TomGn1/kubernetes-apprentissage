@@ -77,7 +77,7 @@ kubectl exec nginx-66686b6766-tcks6 -- env
 ```
 
 ```bash
-kubectl exec nginx-66686b6766-tcks6 -- /bin/bash -c "apt update && apt install -y iputils-ping && ping google.fr
+kubectl exec nginx-66686b6766-tcks6 -- /bin/bash -c "apt update && apt install -y iputils-ping && ping google.fr"
 ```
 
 ```bash
@@ -105,12 +105,12 @@ On agit donc comme un terminal branché directement sur l'application existante 
 On interagit donc avec le processus tel qu'il tourne déjà, sans en créer un nouveau.
 
 >[!IMPORTANT]
->On en se place jamais _dans_ un conteneur.
+>On ne se place jamais _dans_ un conteneur.
 >Kubernetes ne fait que créer ou connecter un processus partageant les namespaces du conteneur.
 
 ## 3. `kubectl run`
 
-`kubectl run` permet de **crée rapidement un pod** à partir d’une image conteneur.
+`kubectl run` permet de **créer rapidement un pod** à partir d’une image conteneur.
 
 Cette commande est souvent utilisée dans un contexte de test ou de dépannage pour lancer un pod temporaire dans un namespace donné. On peut ainsi disposer rapidement d'un environnement minimal pour vérifier la connectivité réseau, tester une image ou exécuter des commandes de diagnostic.
 
