@@ -1076,7 +1076,7 @@ source /usr/local/bin/kube-ps1.sh
 PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\] $(kube_ps1) \$ '
 ```
 
-- Lancer la commande `source ~/.bashrc` pour rafraichir le terminal. De nouveaux éléments informatifs, comme le nom du contexte et le namespace actifs, sont alors affichés :
+- Lancer la commande `source ~/.bashrc` pour rafraichir le terminal. De nouveaux éléments informatifs, comme le nom du contexte et le namespace actif, sont alors affichés :
 ```bash
 vagrant@k0s1:~ (⎈|Default:N/A) $
 ```
