@@ -101,6 +101,7 @@ Ils sont définis pour ne pas rencontrer de problèmes d'adressage réseau en é
 # II. [**Services : ClusterIP**](#index)
 
 
+
 ![diagrammeClusterIP](./img/diagrammeClusterIP.png)
 
 ---
