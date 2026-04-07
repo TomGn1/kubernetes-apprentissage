@@ -1365,3 +1365,31 @@ Cela montre que le **ReplicaSet est rattaché au Deployment**, et qu’il est su
 
 ---
 
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argocd
+  namespace: argocd
+spec:
+  project: default
+  source:
+      repoURL: https://argoproj.github.io/argo-helm
+      chart: argo-cd
+      targetRevision: "8.1.2"
+      helm:
+        values: |
+          global:
+            image:
+              tag: v3.3.6
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: true
+    syncOptions:
+      - ServerSideApply=true
+
+```
