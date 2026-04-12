@@ -49,6 +49,12 @@ backend.default.svc.cluster.local
 >
 >Le Service agit comme un panneau de signalisation réseau interne indiquant vers quels Pods le trafic doit être redirigé.
 
+**Il existe 4 types de services** :
+- ClusterIP : Permet de garder les objets accessible uniquement à l'intérieur du cluster.
+- NodePort : Expose un port afin de le rendre accessible à l'intérieur du Cluster
+- LoadBalancer : Utlisé avec un Cloud Provider, il permet d'interagire avec le Load Balancer du Cloud Provider. Permet de faire des demandes d'IP à travers le service Fournis par le Cloud Provider depuis le cluster Kubernetes.
+- ExternalName : Permet d'ajouter des entrées DNS de type CNAME afin de faire correspondre des DNS interne au Cluster avec des entrées DNS externe.
+
 ## 2. Fonctionnement d'un service dans un cluster
 
 _Illustration du fonctionnement d'un service dans un cluster_ :
