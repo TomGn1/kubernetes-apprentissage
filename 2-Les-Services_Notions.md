@@ -116,6 +116,7 @@ Le service **ClusterIP** remédie à ce problème en exposant une **adresse IP v
 >[!NOTE]
 >Si l'adresse IP du service venait à changer, cela n'impacterait pas la communication entre les pods. En effet, les pods ne communiquent pas directement via l'IP du service, mais via son **nom DNS**. C'est le DNS interne du cluster qui se charge de résoudre ce nom vers l'IP courante du service.
 
+_Schéma illustrant le fonctionnement du ClusterIP dans un cluster Kubernetes_
 ![diagrammeClusterIP](./img/diagrammeClusterIP.png)
 
 ---
