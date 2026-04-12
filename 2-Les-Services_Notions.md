@@ -111,7 +111,7 @@ Ils sont définis pour ne pas rencontrer de problèmes d'adressage réseau en é
 
 Dans un cluster Kubernetes chaques pods se voit attribuer une adresse IP. Le problème est que ces pods sont des objets éphémères : si un pod est détruit puis recréé son adresse IP change. 
 
-Le service **ClusterIP** remédie à ce problème en exposant une **adresse IP virtuelle stable, qui lui est propre**. C'est cette IP que les autres pods du cluster **utiliseront pour communiquer**, sans se soucier des IPs changeantes des pods cibles. Le **service se charge ensuite de rediriger** le trafic vers le bon pod.
+Le service **ClusterIP** remédie à ce problème en exposant une **adresse IP virtuelle stable, qui lui est propre**. C'est cette IP que les autres pods du cluster **utiliseront pour communiquer**, sans se soucier des IPs changeantes des pods cibles. Le **service se charge ensuite de rediriger** le trafic vers le bon pod, en gérant également le mapping de ports; par exemple exposer le port `80` du service vers le port `8080` du pod.
 
 >[!NOTE]
 >Si l'adresse IP du service venait à changer, cela n'impacterait pas la communication entre les pods. En effet, les pods ne communiquent pas directement via l'IP du service, mais via son **nom DNS**. C'est le DNS interne du cluster qui se charge de résoudre ce nom vers l'IP courante du service.
