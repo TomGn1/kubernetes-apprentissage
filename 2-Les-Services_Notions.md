@@ -51,7 +51,7 @@ backend.default.svc.cluster.local
 
 **Il existe 4 types de services** :
 - **ClusterIP** : Expose le service sur une IP interne au cluster. Il est uniquement accessible depuis l'intérieur du cluster. C'est le type par défaut.
-- **NodePort** : Expose le service sur un port statique de chaque nœud du cluster, le rendant accessible depuis l'extérieur du cluster via `<NodeIP>:<NodePort>`.
+- **NodePort** : Expose le service sur un port statique de chaque nœud du cluster, le rendant accessible depuis l'extérieur du cluster via `<NodeIP>:<NodePort>`. (A utiliser avec précaution, pour le debug ou des tests rapides. En production, on lui préfère un LoadBalancer ou un Ingress).
 - **LoadBalancer** : Utilisé avec un cloud provider, il provisionne automatiquement un load balancer externe et lui délègue la distribution du trafic entrant vers le service.
 - **ExternalName** : Crée un alias DNS de type CNAME permettant de faire correspondre un nom de service interne au cluster avec un nom DNS externe.
 
@@ -107,7 +107,11 @@ Ils sont définis pour ne pas rencontrer de problèmes d'adressage réseau en é
 <a id="ii-services--clusterip"></a>
 # II. [**Services : ClusterIP**](#index)
 
+**Contexte** :
 
+Dans un cluster Kubernetes chaques pods se voit attribuer une adresse IP. Le problème est que ces pods sont des objets variables, qui ont une durée de vie. Si un pods est détruit puis recréé sont adresse IP changera. 
+
+Le service ClusterIP, va remédier a ce problème en permettant au pods d'utiliser son adresse IP afin d'avoir une adresse statique.
 
 ![diagrammeClusterIP](./img/diagrammeClusterIP.png)
 
