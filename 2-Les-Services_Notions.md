@@ -132,7 +132,7 @@ _Schéma illustrant le fonctionnement du NodePort dans un cluster Kubernetes_
 ![diagrammeNodePort](./img/diagrammeNodePort.png)
 
 >[!CAUTION]
->**NodePort** expose publiquement un port sur l'ensemble des nœuds du cluster. À utiliser avec précaution, principalement pour du debug ou des tests, en production, on lui préfère un **LoadBalancer** ou un **Ingress**.
+>**NodePort** expose publiquement un port sur l'ensemble des nœuds du cluster. À utiliser avec précaution, principalement pour du debug ou des tests. En production, on lui préfère un **LoadBalancer** ou un **Ingress**.
 
 ---
 <a id="vi-services--loadbalancer"></a>
