@@ -131,6 +131,9 @@ Le service **NodePort** permet d'**exposer vers l'extérieur** les pods du clust
 _Schéma illustrant le fonctionnement du NodePort dans un cluster Kubernetes_
 ![diagrammeNodePort](./img/diagrammeNodePort.png)
 
+>[!CAUTION]
+>Les name
+
 ---
 <a id="vi-services--loadbalancer"></a>
 # IV. [**Services : LoadBalancer**](#index)
