@@ -6,11 +6,11 @@ I. [**Services - Présentation**](#i-services--présentation)
 1. [Les rôles d'un service](#1-les-rôles-dun-service)
 2. [Fonctionnement d'un service dans un cluster](#2-fonctionnement-dun-service-dans-un-cluster)
 
-II. [**Services - ClusterIP**](#ii-services--clusterip) - Exposition interne cluster
+II. [**Services - ClusterIP**](#ii-services--clusterip)
 
-III. [**Services - NodePort**](#iii-services--nodeport) - Exposition externe via port node
+III. [**Services - NodePort**](#iii-services--nodeport)
 
-IV. [**Services - LoadBalancer**](#iv-services--loadbalancer) - Intégration cloud providers
+IV. [**Services - LoadBalancer**](#iv-services--loadbalancer)
 
 V. [**Services - ExternalName**](#v-services--externalname)
 
