@@ -126,8 +126,9 @@ _Schéma illustrant le fonctionnement du ClusterIP dans un cluster Kubernetes_
 <a id="iii-services--nodeport"></a>
 # III. [**Services : NodePort**](#index)
 
+Le service **NodePort** permet d'**exposer vers l'extérieur** les pods du cluster. Son fonctionnement s'**appuie sur celui du ClusterIP** (qu'il crée automatiquement) en y ajoutant un élément complémentaire : un **port d'exposition** sur l'ensemble des nœuds du cluster. Ce port, compris dans la plage `30000-32767`, permet d'accéder au service depuis l'extérieur via `<NodeIP>:<NodePort>`.
 
-
+_Schéma illustrant le fonctionnement du NodePort dans un cluster Kubernetes_
 ![diagrammeNodePort](./img/diagrammeNodePort.png)
 
 ---
