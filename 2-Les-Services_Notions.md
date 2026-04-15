@@ -10,11 +10,13 @@ II. [**Services - ClusterIP**](#ii-services--clusterip) - Exposition interne clu
 
 III. [**Services - NodePort**](#iii-services--nodeport) - Exposition externe via port node
 
-IV. [**Services - LoadBalancer**](#ii-services--loadbalancer) - Intégration cloud providers
+IV. [**Services - LoadBalancer**](#iv-services--loadbalancer) - Intégration cloud providers
 
-V. [**Ingress Introduction**](#v-ingress-introduction) - Routage HTTP/HTTPS
+V. [**Services - ExternalName**](#v-services--externalname)
 
-VI. [**Ingress Traefik**](#vi-ingress-traefik) (K3s intégré) - Configuration pratique
+VI. [**Ingress Introduction**](#vi-ingress-introduction) - Routage HTTP/HTTPS
+
+VII. [**Ingress Traefik**](#vii-ingress-traefik) (K3s intégré) - Configuration pratique
 
 ---
 <a id="i-services--présentation"></a>
@@ -123,23 +125,29 @@ _Schéma illustrant le fonctionnement du ClusterIP dans un cluster Kubernetes_
 <a id="iii-services--nodeport"></a>
 # III. [**Services : NodePort**](#index)
 
-
+![diagrammeNodePort](./img/diagrammeNodePort.png)
 
 ---
 <a id="vi-services--loadbalancer"></a>
 # IV. [**Services : LoadBalancer**](#index)
 
+![diagrammeLoadBalancer](./img/diagrammeLoadBalancer.png)
+
+---
+<a id="v-services--externalname"></a>
+# V. [**Services : ExternalName**](#index)
+
+![diagrammeExternalName](./img/diagrammeExternalName.png)
+
+---
+<a id="vi-ingress-introduction"></a>
+# VI. [**Ingress Introduction**](#index)
+
 
 
 ---
-<a id="v-ingress-introduction"></a>
-# V. [**Ingress Introduction**](#index)
-
-
-
----
-<a id="vi-ingress-traefik"></a>
-# VI. [**Ingress Traefik**](#index)
+<a id="vii-ingress-traefik"></a>
+# VII. [**Ingress Traefik**](#index)
 
 
 
