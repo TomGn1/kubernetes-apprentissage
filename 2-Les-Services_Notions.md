@@ -138,7 +138,7 @@ _Schéma illustrant le fonctionnement du NodePort dans un cluster Kubernetes_
 <a id="vi-services--loadbalancer"></a>
 # IV. [**Services : LoadBalancer**](#index)
 
-
+Le service **LoadBalancer** s'appuie sur le **NodePort** en y ajoutant une couche supplémentaire : le **Cloud Controller Manager**. Ce composant, fourni par le cloud provider, **surveille** les services de type **LoadBalancer** et **provisionne automatiquement** un load balancer externe qui **redirige le trafic entrant vers le NodePort du cluster**.
 
 ![diagrammeLoadBalancer](./img/diagrammeLoadBalancer.png)
 
