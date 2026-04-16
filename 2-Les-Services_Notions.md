@@ -140,12 +140,16 @@ _Schéma illustrant le fonctionnement du NodePort dans un cluster Kubernetes_
 
 Le service **LoadBalancer** s'appuie sur le **NodePort** en y ajoutant une couche supplémentaire : le **Cloud Controller Manager**. Ce composant, fourni par le cloud provider, **surveille** les services de type **LoadBalancer** et **provisionne automatiquement** un load balancer externe qui **redirige le trafic entrant vers le NodePort du cluster**.
 
+_Schéma illustrant le fonctionnement du LoadBalancer dans un cluster Kubernetes_
 ![diagrammeLoadBalancer](./img/diagrammeLoadBalancer.png)
 
 ---
 <a id="v-services--externalname"></a>
 # V. [**Services : ExternalName**](#index)
 
+
+
+_Schéma illustrant le fonctionnement de l'ExternalName dans un cluster Kubernetes_
 ![diagrammeExternalName](./img/diagrammeExternalName.png)
 
 ---
