@@ -154,6 +154,11 @@ Son principal intérêt est d'**abstraire un service externe** (une base de donn
 _Schéma illustrant le fonctionnement de l'ExternalName dans un cluster Kubernetes_
 ![diagrammeExternalName](./img/diagrammeExternalName.png)
 
+>[!NOTE]
+>**Rappel** :
+>
+>Un **CNAME** (Canonical Name) est un enregistrement DNS qui fait pointer un nom vers un autre nom, plutôt que vers une IP. Par exemple, `app.mondomaine.fr` vers `api.service-externe.com`.
+
 ---
 <a id="vi-ingress-introduction"></a>
 # VI. [**Ingress Introduction**](#index)
