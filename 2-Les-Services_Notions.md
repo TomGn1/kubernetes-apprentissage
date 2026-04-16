@@ -159,6 +159,10 @@ _Schéma illustrant le fonctionnement de l'ExternalName dans un cluster Kubernet
 >
 >Un **CNAME** (Canonical Name) est un enregistrement DNS qui fait pointer un nom vers un autre nom, plutôt que vers une IP. Par exemple, `app.mondomaine.fr` vers `api.service-externe.com`.
 
+Services (ClusterIP, NodePort, LoadBalancer, ExternalName)
+  └── Endpoints   ← ce que le service expose comme cibles
+        └── kube-proxy  ← qui lit ces Endpoints pour programmer les règles réseau
+
 ---
 <a id="vi-ingress-introduction"></a>
 # VI. [**Ingress Introduction**](#index)
