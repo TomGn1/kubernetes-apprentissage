@@ -147,7 +147,9 @@ _Schéma illustrant le fonctionnement du LoadBalancer dans un cluster Kubernetes
 <a id="v-services--externalname"></a>
 # V. [**Services : ExternalName**](#index)
 
+Le service **ExternalName** fonctionne comme un CNAME DNS. Il permet aux pods du cluster d'**accéder à une ressource externe via un nom DNS interne** (`name.namespace.svc.cluster.local`). Lorsqu'un pod interroge ce nom, **CoreDNS** retourne simplement un CNAME pointant vers le DNS externe configuré, **sans proxyingni IP virtuelle**.
 
+Son principal intérêt est d'**abstraire un service externe** (une base de données, une API tierce) derrière un nom interne stable. Si l'adresse externe change, **seul le service ExternalName est à mettre à jour**, les pods n'ont pas besoin d'être modifiés.
 
 _Schéma illustrant le fonctionnement de l'ExternalName dans un cluster Kubernetes_
 ![diagrammeExternalName](./img/diagrammeExternalName.png)
