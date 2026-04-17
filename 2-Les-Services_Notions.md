@@ -165,12 +165,20 @@ _Schéma illustrant le fonctionnement de l'ExternalName dans un cluster Kubernet
 
 Lorsqu'un Service est créé, Kubernetes crée automatiquement un objet **Endpoint** associé. Cet objet contient la liste des adresses IP et ports des pods correspondant au selector du Service. À chaque fois qu'un pod est créé, supprimé ou devient indisponible, Kubernetes met à jour l'Endpoint en conséquence, garantissant que le Service ne redirige jamais le trafic vers un pod qui n'est plus en mesure de le traiter.
 
+```text
 Services (ClusterIP, NodePort, LoadBalancer, ExternalName)
   └── Endpoints   ← ce que le service expose comme cibles
         └── kube-proxy  ← qui lit ces Endpoints pour programmer les règles réseau
+```
 
 >[!NOTE]
 >On peut vérifier les Endpoints d'un Service avec `kubectl get endpoints <nom-du-service>`. C'est utile pour débugger un Service qui ne répond pas : si la liste est vide, aucun pod ne correspond au selector.
+
+---
+
+## `kube-proxy`
+
+
 
 ---
 <a id="vi-ingress-introduction"></a>
