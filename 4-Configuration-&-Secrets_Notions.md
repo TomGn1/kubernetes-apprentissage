@@ -1,42 +1,50 @@
 <a id="index"></a>
 **Index** :
 
-I. [**ConfigMaps**](#i-configmaps) - Configuration externalisée
+I. [**Labels et annotations**](#i-labels-et-annotations)
 
-II. [**Secrets**](#ii-secrets) - Credentials sensibles
+II. [**ConfigMaps**](#ii-configmaps) - Configuration externalisée
 
-III. [**Environment Variables**](#iii-environment-variables) - Injection config dans pods
+III. [**Secrets**](#iii-secrets) - Credentials sensibles
 
-IV. [**Volume ConfigMaps/Secrets**](#iv-configmapssecrets) - Montage fichiers config
+IV. [**Environment Variables**](#iv-environment-variables) - Injection config dans pods
 
-V. [**Best Practices Config**](#v-best-practice-config) - Patterns recommandés
+V. [**Volume ConfigMaps/Secrets**](#v-configmapssecrets) - Montage fichiers config
 
----
-<a id="i-configmaps"></a>
-# I. [**ConfigMaps**](#index)
-
-
+VI. [**Best Practices Config**](#vi-best-practice-config) - Patterns recommandés
 
 ---
-<a id="ii-secrets"></a>
-# II. [**Secrets**](#index)
+<a id="i-labels-et-annotations"></a>
+# I. [**Labels et annotations**](#index)
 
 
 
 ---
-<a id="iii-environment-variables"></a>
-# III. [**Environment Variables**](#index)
+<a id="ii-configmaps"></a>
+# II. [**ConfigMaps**](#index)
 
 
 
 ---
-<a id="iv-configmapssecrets"></a>
-# IV. [**Volume ConfigMaps/Secrets**](#index)
+<a id="iii-secrets"></a>
+# III. [**Secrets**](#index)
 
 
 
 ---
-<a id="v-best-practice-config"></a>
-# V. [**Best Practices Config**](#index)
+<a id="iv-environment-variables"></a>
+# IV. [**Environment Variables**](#index)
+
+
+
+---
+<a id="v-configmapssecrets"></a>
+# V. [**Volume ConfigMaps/Secrets**](#index)
+
+
+
+---
+<a id="vi-best-practice-config"></a>
+# VI. [**Best Practices Config**](#index)
 
 
