@@ -113,6 +113,19 @@ Les préfixes `kubernetes.io/` et `k8s.io/` sont **réservés** aux composants c
 **Labels natifs à Kubernetes** : 
 - Documentation : https://kubernetes.io/docs/reference/labels-annotations-taints/
 
+**Labels recommandés** (standard Kubernetes) :
+
+Kubernetes définit un ensemble de labels standardisés sous le préfixe `app.kubernetes.io/` pour décrire une application de manière uniforme. Ils ne sont pas obligatoires mais sont attendus par de nombreux outils de l'écosystème (Helm, Kustomize, dashboards, outils de monitoring) :
+
+| Label                            | Description                              | Exemple        |
+|----------------------------------|------------------------------------------|----------------|
+| `app.kubernetes.io/name`         | Nom de l'application                     | `nginx`        |
+| `app.kubernetes.io/instance`     | Identifiant unique de l'instance déployée| `nginx-prod`   |
+| `app.kubernetes.io/version`      | Version actuelle de l'application        | `1.27.0`       |
+| `app.kubernetes.io/component`    | Rôle du composant dans l'architecture    | `database`     |
+| `app.kubernetes.io/part-of`      | Application plus large dont fait partie  | `wordpress`    |
+| `app.kubernetes.io/managed-by`   | Outil qui gère l'objet                   | `helm`         |
+
 ## 2. Les Annotations
 
 Les annotations sont des **métadonnées non-identifiantes** attachées aux objets Kubernetes. Contrairement aux labels, elles ne sont **jamais utilisées par les selectors** : aucun contrôleur, aucun service, aucune règle de scheduling ne se base sur elles pour cibler des objets.
