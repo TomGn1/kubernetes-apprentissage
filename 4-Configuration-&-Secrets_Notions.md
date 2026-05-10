@@ -19,25 +19,23 @@ VI. [**Best Practices Config**](#vi-best-practice-config) - Patterns recommandé
 
 >[!NOTE]
 >**Rappel utile pour les labels** :
->En Yaml, l'utilisation des `"` ou `'` sont recommandées, elles permettent d'éviter certaines erreurs sur le traitement de valeurs en précisant la valeur exacte.
+> En YAML, encadrer les valeurs avec `"` ou `'` est recommandé, notamment pour les labels dont la valeur ressemble à un booléen ou un nombre (`version: "1.0"`, `enabled: "yes"`). Sans guillemets, le parser YAML les interprète comme float ou bool.
 
-Les `labels`et `annotations` sont des metadatas qui vont contribuer à plusieurs ressources de Kubernetes (ex. : les pods, les services, les deployments, les ingress, etc.).
-
-Leurs usages sont différents :
-- Labels : organiser et manager les objets Kubernetes
-- Annotations : intéragir avec des éléments ajoutés à Kubernetes ou externes à Kubernetes
+Les `labels` et `annotations` sont des **métadonnées** attachées aux objets Kubernetes (Pods, Services, Deployments, Ingress, etc.). Ils partagent la même syntaxe `key: value` mais ont des rôles bien distincts : 
+- **Labels** : métadonnées **identifiantes**, utilisées pour organiser, grouper et sélectionner les objets. 
+- **Annotations** : métadonnées **non-identifiantes**, utilisées pour attacher des informations contextuelles destinées à des outils, contrôleurs ou opérateurs humains. La règle simple : si une donnée doit servir à **cibler** des objets, c'est un label. Sinon, c'est une annotation.
 ## 1. Les Labels
 
-Exemple d'usage des labels :
-- Environnement
-- Rôles (frontend, backend)
-- Equipes 
-- Versions
-- Verbosité
-- Localisation
-- etc.
+Il permettent de filtrer et sélectionner les objets afin d'effectuer des actions sur ceux-ci de manière mutualisée.
 
-## 2. Les annotations
+Il pourra être sélectionner :
+- des deployment
+- des services
+- des groupes d'objets à journaliser
+- filtrer des objets
+- dans certain cas, du podAffinity
+
+
 
 
 
