@@ -23,17 +23,28 @@ VI. [**Best Practices Config**](#vi-best-practice-config) - Patterns recommandé
 
 Les `labels` et `annotations` sont des **métadonnées** attachées aux objets Kubernetes (Pods, Services, Deployments, Ingress, etc.). Ils partagent la même syntaxe `key: value` mais ont des rôles bien distincts : 
 - **Labels** : métadonnées **identifiantes**, utilisées pour organiser, grouper et sélectionner les objets. 
-- **Annotations** : métadonnées **non-identifiantes**, utilisées pour attacher des informations contextuelles destinées à des outils, contrôleurs ou opérateurs humains. La règle simple : si une donnée doit servir à **cibler** des objets, c'est un label. Sinon, c'est une annotation.
+- **Annotations** : métadonnées **non-identifiantes**, utilisées pour attacher des informations contextuelles destinées à des outils, contrôleurs ou opérateurs humains. 
+
+La règle simple : si une donnée doit servir à **cibler** des objets, c'est un label. Sinon, c'est une annotation.
 ## 1. Les Labels
 
-Il permettent de filtrer et sélectionner les objets afin d'effectuer des actions sur ceux-ci de manière mutualisée.
+Les labels permettent de **filtrer et sélectionner** des objets pour appliquer des actions de manière mutualisée. Ils sont indexés par l'API server, ce qui les rend efficaces pour les requêtes. 
 
-Il pourra être sélectionner :
-- des deployment
-- des services
-- des groupes d'objets à journaliser
-- filtrer des objets
-- dans certain cas, du podAffinity
+**Cas d'usage typiques :** 
+- Sélection des Pods par un Service (via le `selector`) 
+- Sélection des Pods par un Deployment ou ReplicaSet 
+- Filtrage en ligne de commande : `kubectl get pods -l env=prod` 
+- Règles de scheduling : `nodeSelector`, `nodeAffinity`, `podAffinity` / `podAntiAffinity` 
+- Routage par les NetworkPolicies 
+- Regroupement logique pour la supervision et la journalisation 
+
+**Deux types de selectors :** 
+- *Equality-based* : `env = prod`, `tier != frontend` 
+- *Set-based* : `env in (prod, staging)`, `tier notin (frontend)`
+
+## 2. Annotations
+
+
 
 
 
