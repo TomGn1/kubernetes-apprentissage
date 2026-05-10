@@ -21,15 +21,17 @@ VI. [**Best Practices Config**](#vi-best-practice-config) - Patterns recommandé
 <a id="i-labels-et-annotations"></a>
 # I. [**Labels et annotations**](#index)
 
->[!NOTE]
->**Rappel utile pour les labels** :
-> En YAML, encadrer les valeurs avec `"` ou `'` est recommandé, notamment pour les labels dont la valeur ressemble à un booléen ou un nombre (`version: "1.0"`, `enabled: "yes"`). Sans guillemets, le parser YAML les interprète comme float ou bool.
 
 Les `labels` et `annotations` sont des **métadonnées** attachées aux objets Kubernetes (Pods, Services, Deployments, Ingress, etc.). Ils partagent la même syntaxe `key: value` mais ont des rôles bien distincts : 
 - **Labels** : métadonnées **identifiantes**, utilisées pour organiser, grouper et sélectionner les objets. 
 - **Annotations** : métadonnées **non-identifiantes**, utilisées pour attacher des informations contextuelles destinées à des outils, contrôleurs ou opérateurs humains. 
 
 La règle simple : si une donnée doit servir à **cibler** des objets, c'est un label. Sinon, c'est une annotation.
+
+>[!NOTE]
+>**Rappel utile pour les labels** :
+> En YAML, encadrer les valeurs avec `"` ou `'` est recommandé, notamment pour les labels dont la valeur ressemble à un booléen ou un nombre (`version: "1.0"`, `enabled: "yes"`). Sans guillemets, le parser YAML les interprète comme float ou bool.
+
 ## 1. Les Labels
 
 Les labels permettent de **filtrer et sélectionner** des objets pour appliquer des actions de manière mutualisée. Ils sont indexés par l'API server, ce qui les rend efficaces pour les requêtes. 
