@@ -3,6 +3,10 @@
 
 I. [**Labels et annotations**](#i-labels-et-annotations)
 
+1. [Les Labels](#1-les-labels)
+2. [Les annotations](#2-les-annotations)
+3. [Différences techniques](#3-différences-techniques)
+
 II. [**ConfigMaps**](#ii-configmaps) - Configuration externalisée
 
 III. [**Secrets**](#iii-secrets) - Credentials sensibles
@@ -154,7 +158,7 @@ Comme pour les labels, une annotation peut être préfixée par un domaine DNS p
 
 Les préfixes `kubernetes.io/` et `k8s.io/` sont **réservés** au projet Kubernetes lui-même.
 
-## 3. Différences techniques avec les labels
+## 3. Différences techniques
 
 | Critère                   | Labels                          | Annotations                       |
 |---------------------------|---------------------------------|-----------------------------------|
