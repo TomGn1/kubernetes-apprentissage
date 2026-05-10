@@ -42,10 +42,6 @@ Les labels permettent de **filtrer et sélectionner** des objets pour appliquer 
 - *Equality-based* : `env = prod`, `tier != frontend` 
 - *Set-based* : `env in (prod, staging)`, `tier notin (frontend)`
 
-**Labels natifs à Kubernetes** : 
-- Documentation : https://kubernetes.io/docs/reference/labels-annotations-taints/
-- `kubectl get nodes --show-labels`
-
 ### Exemples :
 
 - Créer un pod avec le label désiré :
@@ -100,6 +96,19 @@ kubectl label deploy <deploymentName> <labelKey>-
 >
 > En pratique : un label ajouté en (1) n'apparaîtra **pas** sur les Pods. Pour cibler les Pods avec un Service, le label doit être dans le `template` (3).
 
+### Convention de nommage
+
+Une clé de label est composée de deux parties optionnellement séparées par un `/` : `préfixe/nom: valeur`
+
+- Le **préfixe** est un sous-domaine DNS (ex. `app.kubernetes.io`, `argoproj.io`). Il est optionnel mais **fortement recommandé** dès qu'un label est consommé par un outil tiers, pour éviter les collisions entre projets.
+- Le **nom** est obligatoire, 63 caractères max, doit commencer et finir par un caractère alphanumérique, et peut contenir `-`, `_`, `.` au milieu.
+- La **valeur** suit les mêmes règles que le nom (63 caractères max, alphanumérique en début/fin), ou peut être vide.
+
+Les préfixes `kubernetes.io/` et `k8s.io/` sont **réservés** aux composants core de Kubernetes.
+
+**Labels natifs à Kubernetes** : 
+- Documentation : https://kubernetes.io/docs/reference/labels-annotations-taints/
+
 ## 2. Les Annotations
 
 Les annotations sont des **métadonnées non-identifiantes** attachées aux objets Kubernetes. Contrairement aux labels, elles ne sont **jamais utilisées par les selectors** : aucun contrôleur, aucun service, aucune règle de scheduling ne se base sur elles pour cibler des objets.
@@ -135,17 +144,6 @@ Leur rôle est de **transporter de l'information contextuelle** : configuration 
 
 - **Activation de comportements optionnels** : Prometheus scrape par exemple les pods qui portent les annotations `prometheus.io/scrape: "true"` et `prometheus.io/port: "8080"`.
 
-### Différences techniques avec les labels
-
-| Critère                   | Labels                          | Annotations                       |
-|---------------------------|---------------------------------|-----------------------------------|
-| Rôle                      | Identifier, sélectionner        | Décrire, configurer               |
-| Utilisé par les selectors | Oui                             | Non                               |
-| Indexé par l'API server   | Oui                             | Non                               |
-| Taille de la valeur       | 63 caractères max               | Pas de limite stricte             |
-| Caractères autorisés      | Restreint (alphanumérique + `-`, `_`, `.`) | Libre (URLs, JSON, multilignes…)  |
-| Exemple de requête        | `kubectl get pods -l env=prod`  | Pas de requête possible           |
-
 ### Convention de nommage
 
 Comme pour les labels, une annotation peut être préfixée par un domaine DNS pour éviter les collisions entre outils. C'est une **bonne pratique fortement recommandée** dès qu'une annotation est consommée par un outil tiers :
@@ -156,14 +154,16 @@ Comme pour les labels, une annotation peut être préfixée par un domaine DNS p
 
 Les préfixes `kubernetes.io/` et `k8s.io/` sont **réservés** au projet Kubernetes lui-même.
 
+## 3. Différences techniques avec les labels
 
-
-
-
-
-
-
-
+| Critère                   | Labels                          | Annotations                       |
+|---------------------------|---------------------------------|-----------------------------------|
+| Rôle                      | Identifier, sélectionner        | Décrire, configurer               |
+| Utilisé par les selectors | Oui                             | Non                               |
+| Indexé par l'API server   | Oui                             | Non                               |
+| Taille de la valeur       | 63 caractères max               | Pas de limite stricte             |
+| Caractères autorisés      | Restreint (alphanumérique + `-`, `_`, `.`) | Libre (URLs, JSON, multilignes…)  |
+| Exemple de requête        | `kubectl get pods -l env=prod`  | Pas de requête possible           |
 
 ---
 <a id="ii-configmaps"></a>
