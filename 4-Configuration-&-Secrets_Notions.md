@@ -58,7 +58,47 @@ kubectl run <podName> --image <imageName> -l version=<x.x.x>
 kubectl get pod -l version=<x.x.x>
 ```
 
-- Pour sélectionner un objet à l'aide d'un label
+- Pour ajouter un label depuis la CLI :
+```bash
+kubectl label deploy <deploymentName> <labelKey>=<labelValue>
+```
+
+- Pour modifier la valeur d'un label existant :
+```bash
+kubectl label deploy <deploymentName> --overwrite <labelKey>=<labelValue>
+```
+
+- Retirer un label d'un objet :
+```bash
+kubectl label deploy <deploymentName> <labelKey>-
+```
+
+> [!WARNING]
+> Lors de l'ajout ou modification de labels dans un manifest, il faut faire attention à **où** ils sont placés : les labels ne se propagent pas automatiquement aux objets enfants.
+>
+> Dans un Deployment, il existe trois emplacements distincts :
+>
+> ```yaml
+> apiVersion: apps/v1
+> kind: Deployment
+> metadata:
+>   labels:        # (1) labels du Deployment lui-même
+>     app: nginx
+> spec:
+>   selector:
+>     matchLabels: # (2) labels que le Deployment cherche pour gérer ses Pods
+>       app: nginx
+>   template:
+>     metadata:
+>       labels:    # (3) labels appliqués aux Pods créés
+>         app: nginx
+> ```
+>
+> - **(1)** sert à retrouver le Deployment lui-même (`kubectl get deploy -l app=nginx`).
+> - **(2)** doit correspondre à **(3)**, sinon le Deployment ne reconnaît pas ses propres Pods (et le manifest est rejeté à l'`apply` car ce champ est immuable une fois créé).
+> - **(3)** est ce que les Services et autres selectors externes utilisent pour cibler les Pods.
+>
+> En pratique : un label ajouté en (1) n'apparaîtra **pas** sur les Pods. Pour cibler les Pods avec un Service, le label doit être dans le `template` (3).
 
 ## 2. Les Annotations
 
