@@ -42,7 +42,7 @@ Les labels permettent de **filtrer et sélectionner** des objets pour appliquer 
 - *Equality-based* : `env = prod`, `tier != frontend` 
 - *Set-based* : `env in (prod, staging)`, `tier notin (frontend)`
 
-Labels natifs à Kubernetes : 
+**Labels natifs à Kubernetes** : 
 - Documentation : https://kubernetes.io/docs/reference/labels-annotations-taints/
 - `kubectl get nodes --show-labels`
 
