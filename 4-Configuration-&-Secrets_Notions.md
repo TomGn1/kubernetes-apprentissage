@@ -46,6 +46,20 @@ Les labels permettent de **filtrer et sélectionner** des objets pour appliquer 
 - Documentation : https://kubernetes.io/docs/reference/labels-annotations-taints/
 - `kubectl get nodes --show-labels`
 
+### Exemples :
+
+- Créer un pod avec le label désiré :
+```bash
+kubectl run <podName> --image <imageName> -l version=<x.x.x>
+```
+
+- Pour filtrer un objet à l'aide d'un label :
+```bash
+kubectl get pod -l version=<x.x.x>
+```
+
+- Pour sélectionner un objet à l'aide d'un label
+
 ## 2. Les Annotations
 
 Les annotations sont des **métadonnées non-identifiantes** attachées aux objets Kubernetes. Contrairement aux labels, elles ne sont **jamais utilisées par les selectors** : aucun contrôleur, aucun service, aucune règle de scheduling ne se base sur elles pour cibler des objets.
