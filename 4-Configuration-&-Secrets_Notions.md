@@ -201,10 +201,23 @@ Les préfixes `kubernetes.io/` et `k8s.io/` sont **réservés** au projet Kubern
 kubectl create configmap <cmName> --from-literal=<myKey>=<myValue>
 ```
 
+>[!NOTE]
+>On peut ajouter d'autre valeurs en les entrant à la suite:
+>```bash
+>kubectl create configmap <cmName> --from-literal=<myKey>=<myValue> --from-literal=<myKey2>=<myValue2>
+>```
+
 - Consulter la ConfigMap créée :
 ```bash
-
+kubectl get configmap <cmName> -o yaml
 ```
+
+- Supprimer une ConfigMap :
+```bash
+kubectl delete configmap <cmName>
+```
+
+
 
 ---
 <a id="iii-secrets"></a>
