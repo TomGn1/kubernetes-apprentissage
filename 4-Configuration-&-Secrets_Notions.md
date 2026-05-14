@@ -222,8 +222,13 @@ kubectl create configmap <cmName> --from-file=<fileName>
 
 - Création d'une ConfigMap depuis un fichier de configuration en spécifiant une clé différente du nom du fichier :
 ```bash
-kubectl create configmap app-config --from-file=conf=path/to/nginx.conf
-# Ici, la clé sera "conf" et non 
+kubectl create configmap app-config --from-file=conf=path/to/<app>.conf
+# Ici, la clé sera "conf" et non "<app>.conf"
+```
+
+- Charger un fichier de variables d'environnement `.env` :
+```bash
+kubectl create configmap app-config --from-env-file=<app>.env
 ```
 
 >[!NOTE]
