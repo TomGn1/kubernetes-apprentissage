@@ -203,7 +203,20 @@ Les préfixes `kubernetes.io/` et `k8s.io/` sont **réservés** au projet Kubern
 
 - Les `Secrets` sont considérés comme un type de volume
 - Ils stockent des données sensibles : mot de passe, token, certificats, etc.
-- **Attention** : les `Secrets` sont stockés encodés en `base64` dans l'`etcd`, l'idéal est de chiffrer la base de donnée `etcd` afin d'assurer un niveau de sécurité fort. Des outils externes sont aussi disponible pour chiffer
+- **Attention** : les `Secrets` sont stockés encodés en `base64` dans l'`etcd`, l'idéal est de chiffrer la base de donnée `etcd` afin d'assurer un niveau de sécurité fort. Des outils externes sont aussi disponible pour chiffrer Secrets :
+	- Coffre forts : HashiCorp Vault, KMS, AWS Secret Manager
+	- Outils pour se connecter au plateforme sécurisés : ExternalSecrets
+	- Chiffrer les données et déployer la clé au seins du cluster Kubernetes : SeledSecrets
+
+
+## Similarités entre ConfigMap et Secrets
+
+- Pas besoins de rebuilder les images de conteneurs
+- Stockés sous forme de `key: value`
+- Utilisent des fichiers ou de variables d'environnement
+- Les formats dans le manifest sont quasiment identiques
+- Permettent d'avoir une configuration externe, requise pour la mise à l'échelle
+- Quand une configuration est changée alors que le pod cible est déjà lancé, celui-ci ne sera pas relancer/redémarré avec la nouvelle configuration
 
 ---
 <a id="iv-environment-variables"></a>
