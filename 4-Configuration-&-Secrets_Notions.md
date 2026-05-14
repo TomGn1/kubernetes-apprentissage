@@ -190,9 +190,7 @@ Les préfixes `kubernetes.io/` et `k8s.io/` sont **réservés** au projet Kubern
 
 ## 1. Présentation :
 
-- Les `ConfigMaps` sont considérées comme un type de volume
-- Elles stockent la ou les configurations sous forme de `key: value` dans le manifest ou dans un fichier appelé dans ce manifest (totales ou partielles)
-- Elles ne contiennent pas d'informations sécrètes
+Une `ConfigMap` est un objet Kubernetes qui stocke des données de configuration non sensibles sous forme de paires `key: value`. Ces données peuvent ensuite être **consommées par un Pod de trois manières** : montées comme fichiers via un volume, injectées comme variables d'environnement individuelles, ou injectées en masse via `envFrom`.
 
 ## 2. Application de ConfigMaps depuis la CLI
 
@@ -308,6 +306,39 @@ spec:
 
 ```
 
+Il y a au moins **3 patterns distincts** de volume, avec des comportements différents :
+
+**a) Monter toute la CM (toutes les clés deviennent des fichiers)**
+```yaml
+volumes:
+  - name: config
+    configMap:
+      name: my-config
+# chaque clé devient un fichier dans mountPath
+```
+
+**b) Monter seulement certaines clés (projection sélective avec `items`)**
+```yaml
+volumes:
+  - name: config
+    configMap:
+      name: my-config
+      items:
+        - key: nginx.conf
+          path: nginx.conf
+```
+
+**c) Écraser un fichier précis avec `subPath`** 
+```yaml
+volumeMounts:
+  - name: config
+    mountPath: /etc/nginx/nginx.conf
+    subPath: nginx.conf
+```
+
+>[!WARNING] 
+>Avec `subPath`, la mise à jour de la ConfigMap **n'est PAS propagée** dans le Pod. Sans `subPath`, le kubelet rafrai le fichier monté (avec un délai d'environ 1 min lié au `configMapAndSecretChangeDetectionStrategy`). C'est _la_ raison pour laquelle on doit souvent rolling-restart un Deployment après update d'une CM.
+
 ---
 <a id="iii-secrets"></a>
 # III. [**Secrets**](#index)
@@ -335,7 +366,7 @@ spec:
 <a id="iv-environment-variables"></a>
 # IV. [**Environment Variables**](#index)
 
-Les ConfigMaps permettent de définir des variables d’environnement qui seront montés dans le 
+Les ConfigMaps permettent de définir des variables d’environnement qui seront montés dans le pod
 
 ---
 <a id="v-configmapssecrets"></a>
