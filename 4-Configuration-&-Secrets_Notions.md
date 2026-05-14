@@ -335,7 +335,7 @@ spec:
 <a id="iv-environment-variables"></a>
 # IV. [**Environment Variables**](#index)
 
-
+Les ConfigMaps permettent de définir des variables d’environnement qui seront montés dans le 
 
 ---
 <a id="v-configmapssecrets"></a>
