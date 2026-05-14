@@ -220,6 +220,12 @@ kubectl delete configmap <cmName>
 kubectl create configmap <cmName> --from-file=<fileName>
 ```
 
+- Création d'une ConfigMap depuis un fichier de configuration en spécifiant une clé différente du nom du fichier :
+```bash
+kubectl create configmap app-config --from-file=conf=path/to/nginx.conf
+# Ici, la clé sera "conf" et non 
+```
+
 >[!NOTE]
 >Exemple avec une configuration `nginx.conf` :
 >```bash
