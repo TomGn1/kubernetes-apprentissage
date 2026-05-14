@@ -188,13 +188,22 @@ Les préfixes `kubernetes.io/` et `k8s.io/` sont **réservés** au projet Kubern
 <a id="ii-configmaps"></a>
 # II. [**ConfigMaps**](#index)
 
+## 1. Présentation :
+
+- Les `ConfigMaps` sont considérées comme un type de volume
+- Elles stockent la ou les configurations sous forme de `key: value` dans le manifest ou dans un fichier appelé dans ce manifest (totales ou partielles)
+- Elles ne contiennent pas d'informations sécrètes
 
 
 ---
 <a id="iii-secrets"></a>
 # III. [**Secrets**](#index)
 
+## 1. Présentation :
 
+- Les `Secrets` sont considérés comme un type de volume
+- Ils stockent des données sensibles : mot de passe, token, certificats, etc.
+- **Attention** : les `Secrets` sont stockés encodés en `base64` dans l'`etcd`, l'idéal est de chiffrer la base de donnée `etcd` afin d'assurer un niveau de sécurité fort. Des outils externes sont aussi disponible pour chiffer
 
 ---
 <a id="iv-environment-variables"></a>
