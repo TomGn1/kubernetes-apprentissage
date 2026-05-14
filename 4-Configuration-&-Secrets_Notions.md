@@ -223,11 +223,90 @@ kubectl create configmap <cmName> --from-file=<fileName>
 ```
 
 >[!NOTE]
->Exemple avec une configuration nginx.conf :
+>Exemple avec une configuration `nginx.conf` :
 >```bash
 >kubectl create configmap nginx-conf --from-file=nginx.conf
 >```
->Le manifest de
+>Le manifest de la ConfigMap crée injecte le bloc de texte du fichier `nginx.conf` :
+>```bash
+>vagrant@k0s1:~$ kubectl get cm nginx-conf -o yaml
+>apiVersion: v1
+>data:
+> nginx.conf: |
+>    events {}
+>
+>    http {
+>        server {
+>            listen 80;
+>            location / {
+>                return 200 'Hello from custom Nginx configuration!';
+>                add_header Content-Type text/plain;
+>            }
+>        }
+>    }
+>kind: ConfigMap
+>metadata:
+>  creationTimestamp: "2026-05-14T15:33:28Z"
+>  name: nginx-conf
+>  namespace: demo1
+>  resourceVersion: "43116"
+>  uid: f3da7f02-25a5-4a4c-83ae-318b7c646bd1
+>```
+
+- Il est aussi possible d'utiliser un herdoc bash pour appliquer directement une configuration, ici un exemple avec une configuration nginx :
+```bash
+kubectl apply -f - <<EOF
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-config
+data:
+  nginx.conf: |
+    events {}
+
+    http {
+        server {
+            listen 80;
+            location / {
+                return 200 'Hello from custom Nginx configuration!';
+                add_header Content-Type text/plain;
+            }
+        }
+    }
+EOF
+```
+
+>[!NOTE]
+>Avec `kubectl apply` les configurations peuvent être modifiées et appliqués directement sur le/les pods en cours.
+
+## 3. Déclarer une ConfigMap dans un manifest
+
+- Les ConfigMaps comme les Secrets, sont décrits dans un manifest sous la forme de `volumes`
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: <podName>
+spec:
+  containers:
+    - name: <containerName>
+      image: <imageName>
+      volumeMounts:
+        - name: <configMapVolumeName>
+          mountPath: /etc/nginx/nginx.conf    # Overwrite the default nginx.conf
+          subPath: nginx.conf                 # Specify the key
+      ports:
+        - containerPort: 80
+  volumes:
+    - name: nginx-config-volume
+      configMap:
+        name: nginx-config	# name of the confgmap
+        items:
+          - key: nginx.conf 	# the key to be used
+            path: nginx.conf	# the path
+
+```
 
 ---
 <a id="iii-secrets"></a>
