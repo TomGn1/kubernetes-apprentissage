@@ -220,17 +220,6 @@ kubectl delete configmap <cmName>
 kubectl create configmap <cmName> --from-file=<fileName>
 ```
 
-- Création d'une ConfigMap depuis un fichier de configuration en spécifiant une clé différente du nom du fichier :
-```bash
-kubectl create configmap app-config --from-file=conf=path/to/<app>.conf
-# Ici, la clé sera "conf" et non "<app>.conf"
-```
-
-- Charger un fichier de variables d'environnement `.env` :
-```bash
-kubectl create configmap app-config --from-env-file=<app>.env
-```
-
 >[!NOTE]
 >Exemple avec une configuration `nginx.conf` :
 >```bash
@@ -261,6 +250,18 @@ kubectl create configmap app-config --from-env-file=<app>.env
 >  resourceVersion: "43116"
 >  uid: f3da7f02-25a5-4a4c-83ae-318b7c646bd1
 >```
+
+- Création d'une ConfigMap depuis un fichier de configuration en spécifiant une clé différente du nom du fichier :
+```bash
+kubectl create configmap app-config --from-file=conf=path/to/<app>.conf
+# Ici, la clé sera "conf" et non "<app>.conf"
+```
+
+- Charger un fichier de variables d'environnement `.env` :
+```bash
+kubectl create configmap app-config --from-env-file=<app>.env
+```
+
 
 - Il est aussi possible d'utiliser un herdoc bash pour appliquer directement une configuration, ici un exemple avec une configuration nginx :
 ```bash
@@ -384,6 +385,29 @@ Dans cette pattern avec `subPath`, on cible **un fichier précis** sans toucher 
 # IV. [**Environment Variables**](#index)
 
 Les ConfigMaps permettent de définir des variables d’environnement qui seront montés dans le pod
+
+**a) Une variable précise depuis une clé (`valueFrom.configMapKeyRef`)**
+
+```yaml
+env:
+  - name: DATABASE_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: app-config
+        key: db_host
+```
+
+**b) Toutes les clés d'un coup (`envFrom`)**
+
+```yaml
+envFrom:
+  - configMapRef:
+      name: app-config
+# chaque clé de la CM devient une variable d'env
+```
+
+>[!NOTE] 
+>**Différence majeure avec le volume** : les variables d'environnement sont **figées au démarrage du conteneur**. Modifier la CM ne change rien tant que le Pod n'est pas recréé. Contrairement au volume (hors `subPath`) où le fichier est mis à jour.
 
 ---
 <a id="v-configmapssecrets"></a>
