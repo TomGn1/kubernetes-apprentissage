@@ -279,7 +279,9 @@ EOF
 
 ## 3. Déclarer une ConfigMap dans un manifest
 
-- Les ConfigMaps comme les Secrets, sont décrits dans un manifest sous la forme de `volumes`
+- Les ConfigMaps comme les Secrets, sont décrits dans un manifest sous la forme de `volumes`.
+
+**Exemple** :
 
 ```yaml
 apiVersion: v1
@@ -311,9 +313,9 @@ Il y a au moins **3 patterns distincts** de volume, avec des comportements diff�
 **a) Monter toute la CM (toutes les clés deviennent des fichiers)**
 ```yaml
 volumes:
-  - name: config
+  - name: <configMapVolumeName>
     configMap:
-      name: my-config
+      name: <configMapName>	
 # chaque clé devient un fichier dans mountPath
 ```
 
@@ -322,20 +324,20 @@ Dans cette pattern, le `mountPath` est traité comme un **répertoire** et tout 
 **b) Monter seulement certaines clés (projection sélective avec `items`)**
 ```yaml
 volumes:
-  - name: config
+  - name: <configMapVolumeName>
     configMap:
-      name: my-config
+      name: <configMapName>	
       items:
-        - key: nginx.conf
-          path: nginx.conf
+        - key: <usedKey>
+          path: <usedFileName>
 ```
 
 **c) Écraser un fichier précis avec `subPath`** 
 ```yaml
 volumeMounts:
-  - name: config
-    mountPath: /etc/nginx/nginx.conf
-    subPath: nginx.conf
+  - name: <configMapVolumeName>
+    mountPath: <pathToConfigFile> 
+    subPath: <configFile>
 ```
 
 Dans cette pattern avec `subPath`, on cible **un fichier précis** sans toucher au reste du répertoire.
