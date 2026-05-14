@@ -317,6 +317,8 @@ volumes:
 # chaque clé devient un fichier dans mountPath
 ```
 
+Dans cette pattern, le `mountPath` est traité comme un **répertoire** et tout ce qui existait à cet emplacement dans l'image est masqué.
+
 **b) Monter seulement certaines clés (projection sélective avec `items`)**
 ```yaml
 volumes:
@@ -336,8 +338,10 @@ volumeMounts:
     subPath: nginx.conf
 ```
 
+Dans cette pattern avec `subPath`, on cible **un fichier précis** sans toucher au reste du répertoire.
+
 >[!WARNING] 
->Avec `subPath`, la mise à jour de la ConfigMap **n'est PAS propagée** dans le Pod. Sans `subPath`, le kubelet rafrai le fichier monté (avec un délai d'environ 1 min lié au `configMapAndSecretChangeDetectionStrategy`). C'est _la_ raison pour laquelle on doit souvent rolling-restart un Deployment après update d'une CM.
+>Avec `subPath`, la mise à jour de la ConfigMap **n'est PAS propagée** dans le Pod. Sans `subPath`, le kubelet rafraîchit le fichier monté (avec un délai d'environ 1 min lié au `configMapAndSecretChangeDetectionStrategy`). C'est _la_ raison pour laquelle on doit souvent rolling-restart un Deployment après update d'une CM.
 
 ---
 <a id="iii-secrets"></a>
