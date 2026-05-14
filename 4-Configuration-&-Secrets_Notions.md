@@ -217,7 +217,17 @@ kubectl get configmap <cmName> -o yaml
 kubectl delete configmap <cmName>
 ```
 
+- Création d'une ConfigMap depuis un fichier de configuration :
+```bash
+kubectl create configmap <cmName> --from-file=<fileName>
+```
 
+>[!NOTE]
+>Exemple avec une configuration nginx.conf :
+>```bash
+>kubectl create configmap nginx-conf --from-file=nginx.conf
+>```
+>Le manifest de
 
 ---
 <a id="iii-secrets"></a>
