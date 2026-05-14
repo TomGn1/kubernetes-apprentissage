@@ -294,17 +294,17 @@ spec:
       image: <imageName>
       volumeMounts:
         - name: <configMapVolumeName>
-          mountPath: /etc/nginx/nginx.conf    # Overwrite the default nginx.conf
-          subPath: nginx.conf                 # Specify the key
+          mountPath: <pathToConfigFile>    # Overwrite the default configuration
+          subPath: <configFile>            # Specify the key
       ports:
         - containerPort: 80
   volumes:
-    - name: nginx-config-volume
+    - name: <configMapVolumeName>
       configMap:
-        name: nginx-config	# name of the confgmap
+        name: <configMapName>	           # name of the confgmap
         items:
-          - key: nginx.conf 	# the key to be used
-            path: nginx.conf	# the path
+          - key: <usedKey> 	               # the key to be used
+            path: <usedFileName>	       # the path
 
 ```
 
