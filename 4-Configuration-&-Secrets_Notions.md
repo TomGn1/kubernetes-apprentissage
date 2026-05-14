@@ -194,6 +194,17 @@ Les préfixes `kubernetes.io/` et `k8s.io/` sont **réservés** au projet Kubern
 - Elles stockent la ou les configurations sous forme de `key: value` dans le manifest ou dans un fichier appelé dans ce manifest (totales ou partielles)
 - Elles ne contiennent pas d'informations sécrètes
 
+## 2. Application de ConfigMaps depuis la CLI
+
+- Création d'une ConfigMap :
+```bash
+kubectl create configmap <cmName> --from-literal=<myKey>=<myValue>
+```
+
+- Consulter la ConfigMap créée :
+```bash
+
+```
 
 ---
 <a id="iii-secrets"></a>
